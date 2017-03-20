@@ -1,0 +1,23 @@
+{
+  "name": "project-wise",
+  "version": "0.1.0",
+  "description": "A place for designers to explore open-source projects to work on.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsyogesh/projectwise.git"
+  },
+  "keywords": [
+    "open-source",
+    "design"
+  ],
+  "author": "Yogesh Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsyogesh/projectwise/issues"
+  },
+  "homepage": "https://github.com/itsyogesh/projectwise#readme"
+}
