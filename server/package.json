@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/itsyogesh/projectwise/issues"
   },
-  "homepage": "https://github.com/itsyogesh/projectwise#readme"
+  "homepage": "https://github.com/itsyogesh/projectwise#readme",
+  "dependencies": {
+    "validator": "^7.0.0"
+  }
 }
