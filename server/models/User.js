@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    description: String,
     github: String,
     dribbble: String,
     behance: String,
@@ -49,10 +50,18 @@ UserSchema.pre('save', function (next){
   })
 })
 
-UserSchema.methods.validateResetToken = function() {
+UserSchema.methods.validateResetToken = function(token) {
   const expiresIn = 2 //2 days, need to move this.
   var now = new Date()
-  return (now - createDate) > expiresIn
+  const isValid = (this.token.resetToken === token && (now - this.createDate) > expiresIn)
+  return isValid
+}
+
+UserSchema.methods.user = function() {
+  let user = this.toObject()
+  delete user.password
+  delete user.token
+  return user
 }
 
 UserSchema.methods.comparePassword = function(validatePassword, cb) {

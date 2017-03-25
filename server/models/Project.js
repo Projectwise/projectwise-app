@@ -44,7 +44,7 @@ const ProjectSchema = new mongoose.Schema({
     ux: {type: Boolean, default: false}
   },
   meta: {
-    projectUrl: {type: String},
+    projectUrl: {type: String, required: true},
     homepage: { type: String}
   },
   createdAt: {
