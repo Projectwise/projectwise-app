@@ -27,7 +27,7 @@ exports.postProject = (req, res, next) => {
 
   if(Object.keys(validatedProject.errors).length){
     let err = new Error('Invalid data')
-    err.statusCode = 400
+    err.statusCode = 422
     err.details = validatedProject.errors
     return next(err)
   }

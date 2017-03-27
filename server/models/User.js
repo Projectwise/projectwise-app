@@ -28,26 +28,33 @@ const UserSchema = new mongoose.Schema({
     website: String
   },
   token: {
-    resetToken: {type: String},
-    createdAt: {type: Date}
+    password: {
+      resetToken: {type: String},
+      createdAt: {type: Date},
+    },
+    emailToken: {type: String}
+  },
+  meta: {
+    isVerified: {type: Boolean, default: false},
+    isActive: {type: Boolean, default: true}
   }
 })
 
+
 UserSchema.pre('save', function (next){
-  const user = this
   const SALT_FACTOR = 5
+  if(!this.isModified('password')) next()
 
-  if(!user.isModified('password')) return next()
-
-  bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
-    if(err) return next(err)
-
-    bcrypt.hash(user.password, salt, null, (err, hash) => {
-      if(err) return next(err)
-      user.password = hash
-      next()
+  bcrypt.genSalt(SALT_FACTOR)
+    .then((salt) => {
+      bcrypt.hash(this.password, salt)
+        .then(hash => {
+          this.password = hash
+          next()
+        })
+        .catch(err => next(err))
     })
-  })
+    .catch(err => next(err))
 })
 
 UserSchema.methods.validateResetToken = function(token) {
@@ -57,10 +64,11 @@ UserSchema.methods.validateResetToken = function(token) {
   return isValid
 }
 
-UserSchema.methods.user = function() {
+UserSchema.methods.toUserObject = function() {
   let user = this.toObject()
   delete user.password
-  delete user.token
+  if(user.token) delete user.token
+  delete user.__v
   return user
 }
 

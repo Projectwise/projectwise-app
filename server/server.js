@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
-const validator = require('express-validator')
 
 require('dotenv').config()
 
@@ -21,8 +20,6 @@ const app = express()
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.use(validator())
-
 app.use(logger('dev'))
 
 app.use(cors())
@@ -32,7 +29,7 @@ router(app)
 app.use((err, req, res, next) => {
 
   if(req.app.get('env') !== 'development') {
-    delete err.stack
+
   }
   console.log(err)
   return res.status(err.statusCode || 500).json({
