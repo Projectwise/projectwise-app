@@ -20,10 +20,11 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
     if(!user) {
       return done(null, false, { error: 'Your local details could not be verified'})
     }
+
     user.comparePassword(password, (err, isMatch) => {
       if(err) return done(err)
 
-      if(!user) {
+      if(!isMatch) {
         return done(null, false, { error: 'Your local details could not be verified'})
       }
 

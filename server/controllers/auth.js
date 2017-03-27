@@ -62,6 +62,7 @@ exports.register = (req, res, next) => {
  }
 
 exports.login = (req, res, next) => {
+  
   User.findById(req.user._id, (err, user) => {
     if(err) return next(err)
     user = user.toUserObject()
