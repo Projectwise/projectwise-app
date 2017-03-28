@@ -16,18 +16,14 @@ const JWTOptions = {
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
   User.findOne({ email }, (err, user) => {
     if (err) done(err)
-
     if(!user) {
-      return done(null, false, { error: 'Your local details could not be verified'})
+      return done(null, false, { error: 'Your details could not be verified'})
     }
-
     user.comparePassword(password, (err, isMatch) => {
       if(err) return done(err)
-
       if(!isMatch) {
-        return done(null, false, { error: 'Your local details could not be verified'})
+        return done(null, false, { error: 'Your details could not be verified'})
       }
-
       return done(null, user)
     })
   })
@@ -45,5 +41,4 @@ const JWTLogin = new JWTStrategy(JWTOptions, (payload, done) => {
 passport.use(JWTLogin)
 passport.use(localLogin)
 
-exports.requireLogin = passport.authenticate('local', {session: false})
 exports.isAuthenticated = passport.authenticate('jwt', {session: false})

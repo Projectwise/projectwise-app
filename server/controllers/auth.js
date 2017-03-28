@@ -1,6 +1,7 @@
 const JWT = require('jsonwebtoken')
 const crypto = require('crypto')
 const validator = require('validator')
+const passport = require('passport')
 const series = require('async/series')
 
 const User = require('../models/User')
@@ -30,7 +31,6 @@ exports.register = (req, res, next) => {
      if(err) {
        return next(err)
      }
-     console.log('results of series', results)
      if(results.isUser) errors['email'] = 'Email is already in use'
 
      if(Object.keys(errors).length){
@@ -62,10 +62,13 @@ exports.register = (req, res, next) => {
  }
 
 exports.login = (req, res, next) => {
-  
-  User.findById(req.user._id, (err, user) => {
+  passport.authenticate('local', {session: false}, (err, user, info) => {
     if(err) return next(err)
-    user = user.toUserObject()
+    if(!user) return next({
+      statusCode: 401,
+      message: info.error
+    })
+
     const webToken = generateWebToken({
       email: user.email,
       _id: user._id
@@ -73,7 +76,7 @@ exports.login = (req, res, next) => {
     return res.status(200).json({
       token: `JWT ${webToken}`
     })
-  })
+  })(req, res, next)
 }
 
 const generateEmailToken = () => {
@@ -89,7 +92,6 @@ const generateEmailToken = () => {
 }
 
 const checkUser = (email) => {
-  console.log("email********", email)
   return new Promise(function(resolve, reject) {
     User.findOne({email}, (err, existingUser) => {
       if(err) {
@@ -105,8 +107,6 @@ validateUser = (body) => {
   let errors = {}
   let user = {}
   user['profile'] = {}
-
-  console.log(body)
 
   if(!body.email || !validator.isEmail(validator.trim(body.email))) {
     errors['email'] = 'Invalid email'

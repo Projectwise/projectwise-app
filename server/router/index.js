@@ -10,7 +10,7 @@ module.exports = (app) => {
 
   APIRoutes.use('/', authRoutes)
   authRoutes.post('/signup', authController.register)
-  authRoutes.post('/login', passport.requireLogin, authController.login)
+  authRoutes.post('/login', authController.login)
 
   APIRoutes.use('/projects', projectRoutes)
   projectRoutes.post('/', projectController.postProject)
