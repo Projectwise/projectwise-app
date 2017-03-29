@@ -1,8 +1,10 @@
 import React from 'react'
 
+import Landing from './Landing'
+
 const Root = () => {
   return(
-    <h1>Root File </h1>
+    <Landing />
   )
 }
 
