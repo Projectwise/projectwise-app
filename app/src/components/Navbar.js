@@ -15,7 +15,7 @@ class Navbar extends Component {
           <Menu.Item as={NavLink} to='/explore'>Explore</Menu.Item>
           <Menu.Item href='//github.com/itsyogesh/Projectwise' target='_blank'>Github</Menu.Item>
           <Menu.Item>
-            <Button as={Link} to='/new' inverted>Add Project</Button>
+            <Button as={Link} to='/signup' inverted>Get Started</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

@@ -1,10 +1,15 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
 import Landing from './Landing'
+import Signup from './Signup'
 
 const Root = () => {
   return(
-    <Landing />
+    <Switch>
+    <Route exact path='/' component={Landing} />
+    <Route path='/signup' component={Signup} />
+  </Switch>
   )
 }
 
