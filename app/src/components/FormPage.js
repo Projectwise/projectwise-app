@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 const FormPage = (props) => {
   return(
     <Container fluid className='inverted-bg'>
-      <Segment basic inverted>
+      <Segment basic inverted className='navbar-bg'>
         <Navbar inverted/>
       </Segment>
       <Grid centered columns={1}>

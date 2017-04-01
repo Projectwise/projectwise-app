@@ -10,7 +10,7 @@ class Signup extends Component {
       <FormPage>
         <Header as='h1' textAlign='center'>Join Projectwise</Header>
         <p className='text-center'>By signing up, you agree to all the terms and conditions</p>
-          <Form className='signup-form'>
+          <Form className='form-padded'>
             <Form.Group widths='equal'>
               <Form.Field>
                 <Input placeholder='First name' required />
@@ -33,13 +33,11 @@ class Signup extends Component {
             <Form.TextArea placeholder='Tell us more about you...' />
             <Segment basic padded textAlign='center'>
               <Button color='teal' size='large'>Create my account</Button>
+                <h5 className='text-center'>
+                  If you already have an account, please <Link to='/login'>login</Link> here.
+                </h5>
             </Segment>
           </Form>
-          <Segment basic>
-            <h5 className='text-center'>
-              If you already have an account, please <Link to='/login'>login</Link> here.
-            </h5>
-          </Segment>
       </FormPage>
     )
   }

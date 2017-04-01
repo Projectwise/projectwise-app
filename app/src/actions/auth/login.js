@@ -2,6 +2,8 @@
 import { LOGIN } from '../../config/constants'
 import API from '../../api'
 
+console.log(API)
+
 const requestLogin = (credentials) => {
   return {
     type: LOGIN.REQUEST,
@@ -27,7 +29,7 @@ const loginUser = (credentials) => {
 
   return (dispatch) => {
     dispatch(requestLogin(credentials))
-
+    
     return API.login(credentials)
       .then((response) => {
         if(response.statusText !== 'OK') {

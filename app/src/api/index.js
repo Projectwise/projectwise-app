@@ -1,14 +1,18 @@
 import axios from 'axios'
 
-axios.default.baseURL = 'http://localhost:3000/api'
+const defaultAPI = axios.create({
+  baseURL: 'http://localhost:8080/api'
+})
 
-export const login = ({email, password}) => {
-  return axios.post('/login', {
+const login = ({email, password}) => {
+  return defaultAPI.post('/login', {
     email,
     password
   })
 }
 
-export const setAuthHeaders = (token) => {
-  axios.defaults.headers.common['Authorization'] = token
+const setAuthHeaders = (token) => {
+  defaultAPI.defaults.headers.common['Authorization'] = token
 }
+
+export default {login, setAuthHeaders}
