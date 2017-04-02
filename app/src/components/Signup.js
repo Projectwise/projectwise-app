@@ -7,7 +7,7 @@ import FormPage from './FormPage'
 class Signup extends Component {
   render(){
     return(
-      <FormPage>
+      <FormPage centered>
         <Header as='h1' textAlign='center'>Join Projectwise</Header>
         <p className='text-center'>By signing up, you agree to all the terms and conditions</p>
           <Form className='form-padded'>

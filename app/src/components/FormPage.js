@@ -9,7 +9,7 @@ const FormPage = (props) => {
       <Segment basic inverted className='navbar-bg'>
         <Navbar inverted/>
       </Segment>
-      <Grid centered columns={1}>
+      <Grid centered={props.centered} columns={1}>
         <Container text className='block-container'>
           <Segment basic padded>
             {props.children}

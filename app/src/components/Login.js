@@ -43,7 +43,7 @@ class Login extends Component {
     )
     else {
       return(
-        <FormPage>
+        <FormPage centered>
           <Header as='h1' textAlign='center'>Login to Projectwise</Header>
           <Form className='form-padded' onSubmit={this.handleSubmit}>
             <Form.Field>
