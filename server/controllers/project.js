@@ -31,6 +31,7 @@ exports.postProject = (req, res, next) => {
     err.details = validatedProject.errors
     return next(err)
   }
+  validatedProject.project['addedBy'] = req.user._id
   let project = new Project(validatedProject.project)
   project.save()
     .then((project) => {
@@ -93,5 +94,6 @@ const validateProject = (body) => {
   if(body.uxHelp && validator.toBoolean(body.uxHelp, ['strict'])) {
     project['helpFields']['ux'] = true
   }
+
   return {errors, project}
 }
