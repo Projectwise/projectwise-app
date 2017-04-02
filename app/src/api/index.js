@@ -11,8 +11,12 @@ const login = ({email, password}) => {
   })
 }
 
+const addProject = (project) => {
+  return defaultAPI.post('/projects', project)
+}
+
 const setAuthHeaders = (token) => {
   defaultAPI.defaults.headers.common['Authorization'] = token
 }
 
-export default {login, setAuthHeaders}
+export default {login, addProject, setAuthHeaders}
