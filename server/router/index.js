@@ -13,7 +13,7 @@ module.exports = (app) => {
   authRoutes.post('/login', authController.login)
 
   APIRoutes.use('/projects', projectRoutes)
-  projectRoutes.post('/', authController.isAuthenticated, projectController.postProject)
+  projectRoutes.post('/', passport.isAuthenticated, projectController.postProject)
   projectRoutes.get('/', projectController.getAllProjects)
   projectRoutes.get('/:projectId', projectController.getProject)
 

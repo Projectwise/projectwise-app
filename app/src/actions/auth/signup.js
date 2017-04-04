@@ -1,14 +1,12 @@
 
-import { LOGIN as constants } from '../../config/constants'
+import { SIGNUP as constants } from '../../config/constants'
 import { setAuthToken } from './token'
 import API from '../../api'
-
-console.log(API)
 
 const request = (credentials) => {
   return {
     type: constants.REQUEST,
-    credentials
+    userDetails
   }
 }
 
@@ -26,12 +24,12 @@ const error = (message) => {
   }
 }
 
-const login = (credentials) => {
+const signup = (userDetails) => {
 
   return (dispatch) => {
-    dispatch(request(credentials))
+    dispatch(request(userDetails))
 
-    return API.login(credentials)
+    return API.signup(credentials)
       .then((response) => {
         if(response.statusText !== 'OK') {
           dispatch(error(response.data.message))
@@ -44,4 +42,4 @@ const login = (credentials) => {
   }
 }
 
-export default login
+export default signup

@@ -4,6 +4,10 @@ const defaultAPI = axios.create({
   baseURL: 'http://localhost:8080/api'
 })
 
+const signup = (userDetails) => {
+  return defaultAPI.post('/signup', userDetails)
+}
+
 const login = ({email, password}) => {
   return defaultAPI.post('/login', {
     email,
@@ -16,7 +20,7 @@ const addProject = (project) => {
 }
 
 const setAuthHeaders = (token) => {
-  defaultAPI.defaults.headers.common['Authorization'] = token
+  defaultAPI.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-export default {login, addProject, setAuthHeaders}
+export default {signup, login, addProject, setAuthHeaders}

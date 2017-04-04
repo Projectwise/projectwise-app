@@ -7,8 +7,18 @@ export const LOGIN = {
 
 export const SIGNUP = {
   REQUEST: 'SIGNUP_REQUEST',
-  SUCCESS: 'SIGNUP_REQUEST',
+  SUCCESS: 'SIGNUP_SUCCESS',
   ERROR: 'SIGNUP_ERROR'
+}
+
+export const LOGOUT = {
+  REQUEST: 'LOGOUT_REQUEST',
+  SUCCESS: 'LOGOUT_SUCCESS'
+}
+
+export const AUTH_TOKEN = {
+  SET: 'SET_AUTH_TOKEN',
+  REMOVE: 'REMOVE_AUTH_TOKEN'
 }
 
 export const PROJECT = {

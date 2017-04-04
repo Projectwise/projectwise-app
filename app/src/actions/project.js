@@ -27,7 +27,7 @@ export const saveProject = (project) => {
   return (dispatch) => {
     dispatch(requestProjectSave(project))
 
-    return API.saveProject(project)
+    return API.addProject(project)
       .then((response) => {
         if(response.statusText !== 'OK') {
           dispatch(projectSaveError(response.data))

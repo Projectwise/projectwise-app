@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
-import loginReducer from './login'
+import userReducer from './user'
+import authReducer from './auth'
 
 const App = combineReducers({
-  loginState: loginReducer
+  isAuthenticated: authReducer,
+  user: userReducer
 })
 
 export default App

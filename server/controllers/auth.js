@@ -68,14 +68,18 @@ exports.login = (req, res, next) => {
       statusCode: 401,
       message: info.error
     })
-
-    const webToken = generateWebToken({
-      email: user.email,
-      _id: user._id
-    })
-    return res.status(200).json({
-      token: `JWT ${webToken}`
-    })
+    User.findById(user._id)
+      .then((user) => {
+        user = user.toUserObject()
+        const webToken = generateWebToken({
+          email: user.email,
+          _id: user._id
+        })
+        return res.status(200).json({
+          user,
+          token: `JWT ${webToken}`
+        })
+      })
   })(req, res, next)
 }
 
