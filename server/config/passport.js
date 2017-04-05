@@ -38,7 +38,7 @@ const JWTLogin = new JWTStrategy(JWTOptions, (payload, done) => {
   })
 })
 
-passport.use(JWTLogin)
 passport.use(localLogin)
+passport.use(JWTLogin)
 
 exports.isAuthenticated = passport.authenticate('jwt', {session: false})

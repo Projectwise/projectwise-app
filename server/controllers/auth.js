@@ -7,9 +7,7 @@ const series = require('async/series')
 const User = require('../models/User')
 
 function generateWebToken(user){
-  return JWT.sign(user, 'process.env.SECRET', {
-    expiresIn: 604800
-  })
+  return JWT.sign(user, process.env.SECRET)
 }
 
 

@@ -85,13 +85,14 @@ const validateProject = (body) => {
     errors['helpFields'] = 'Please select atleast one help field'
   }
 
-  if(body.logoHelp && validator.toBoolean(body.logoHelp, ['strict'])) {
+  if(body.logoHelp) {
+    //validator.toBoolean(body.logoHelp, ['strict'])
     project['helpFields']['logo'] = true
   }
-  if(body.uiHelp && validator.toBoolean(body.uiHelp, ['strict'])) {
+  if(body.uiHelp) {
     project['helpFields']['ui'] = true
   }
-  if(body.uxHelp && validator.toBoolean(body.uxHelp, ['strict'])) {
+  if(body.uxHelp) {
     project['helpFields']['ux'] = true
   }
 

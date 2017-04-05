@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const passport = require('passport')
 
 require('dotenv').config()
 
@@ -16,6 +17,8 @@ connectDB()
   .once('open', listen)
 
 const app = express()
+
+app.use(passport.initialize())
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
