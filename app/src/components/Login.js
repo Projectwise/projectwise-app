@@ -29,9 +29,6 @@ class Login extends Component {
     }
     console.log('credentials', credentials)
     this.props.loginAction(credentials)
-    .then(() => {
-      this.setState({done: true})
-    })
     .catch((err) => {
       console.log(err)
     })

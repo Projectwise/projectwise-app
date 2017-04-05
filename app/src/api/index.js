@@ -20,7 +20,7 @@ const addProject = (project) => {
 }
 
 const setAuthHeaders = (token) => {
-  defaultAPI.defaults.headers.common['Authorization'] = `Bearer ${token}`
+  defaultAPI.defaults.headers.common['Authorization'] = token
 }
 
 export default {signup, login, addProject, setAuthHeaders}
