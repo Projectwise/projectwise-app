@@ -6,6 +6,7 @@ import API from '../../api'
 const request = (credentials) => {
   return {
     type: constants.REQUEST,
+    isLoading: true,
     userDetails
   }
 }
@@ -13,6 +14,7 @@ const request = (credentials) => {
 const receive = (user) => {
   return {
     type: constants.SUCCESS,
+    isLoading: false
     user
   }
 }
@@ -20,6 +22,7 @@ const receive = (user) => {
 const error = (message) => {
   return {
     type: constants.ERROR,
+    isLoading: false
     message
   }
 }

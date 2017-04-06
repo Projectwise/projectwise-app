@@ -1,7 +1,10 @@
 import {LOGIN as loginConstants} from '../config/constants'
 import {SIGNUP as signupConstants} from '../config/constants'
+import {USER as userConstants} from '../config/constants'
 
-const initialState = {}
+const initialState = {
+  isLoading: false
+}
 
 const user = (state = initialState, action) => {
 
@@ -36,6 +39,17 @@ const user = (state = initialState, action) => {
       return Object.assign({}, state, {
         error: action.message
       })
+
+    case userConstants.FETCH_ERROR:
+      return Object.assign({}, state, {
+        error: action.message
+      })
+
+    case userConstants.FETCH_SUCCESS:
+      return Object.assign({}, state, {
+        details: action.user
+      })
+
     default:
       return state
   }

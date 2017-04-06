@@ -7,6 +7,7 @@ import logo from '../images/Logo.png'
 
 class Navbar extends Component {
   render() {
+    console.log(this.props.user)
       const callToAction = (
         !this.props.isAuthenticated ?
           <Button as={Link} to='/signup' inverted>Get Started</Button> :
@@ -30,8 +31,10 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = (state) => {
+
   return {
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,
+    user: (state.isAuthenticated) ? state.user : null
   }
 }
 

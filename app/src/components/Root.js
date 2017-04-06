@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { checkAuth } from '../actions/auth/token'
+import { fetchUser } from '../actions/user'
 
 import Landing from './Landing'
 import Signup from './Signup'
@@ -13,6 +14,13 @@ class Root extends Component {
   componentDidMount() {
     this.props.checkAuth()
   }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isAuthenticated !== this.props.isAuthenticated) {
+      this.props.fetchUser()
+    }
+  }
+
   render(){
     return(
       <Switch>
@@ -25,4 +33,8 @@ class Root extends Component {
   }
 }
 
-export default connect(null, { checkAuth })(Root)
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.isAuthenticated
+})
+
+export default connect(mapStateToProps, { checkAuth, fetchUser })(Root)

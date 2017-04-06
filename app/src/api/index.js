@@ -15,6 +15,10 @@ const login = ({email, password}) => {
   })
 }
 
+const fetchUser = () => {
+  return defaultAPI.get('/profile')
+}
+
 const addProject = (project) => {
   return defaultAPI.post('/projects', project)
 }
@@ -23,4 +27,4 @@ const setAuthHeaders = (token) => {
   defaultAPI.defaults.headers.common['Authorization'] = token
 }
 
-export default {signup, login, addProject, setAuthHeaders}
+export default {signup, login, addProject, fetchUser, setAuthHeaders}
