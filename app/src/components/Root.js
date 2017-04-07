@@ -7,6 +7,7 @@ import { fetchUser } from '../actions/user'
 import Landing from './Landing'
 import Signup from './Signup'
 import Login from './Login'
+import ExploreProjects from './ExploreProjects'
 import ProjectForm from './ProjectForm'
 
 class Root extends Component {
@@ -27,6 +28,7 @@ class Root extends Component {
       <Route exact path='/' component={Landing} />
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
+      <Route path='/explore' component={ExploreProjects} />
       <Route path='/new' component={ProjectForm} />
     </Switch>
     )
