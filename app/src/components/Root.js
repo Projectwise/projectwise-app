@@ -8,6 +8,7 @@ import Landing from './Landing'
 import Signup from './Signup'
 import Login from './Login'
 import ExploreProjects from './ExploreProjects'
+import Project from './Project'
 import ProjectForm from './ProjectForm'
 
 class Root extends Component {
@@ -29,6 +30,7 @@ class Root extends Component {
       <Route path='/signup' component={Signup} />
       <Route path='/login' component={Login} />
       <Route path='/explore' component={ExploreProjects} />
+      <Route path={`/projects/:projectId`} component={Project}/>
       <Route path='/new' component={ProjectForm} />
     </Switch>
     )

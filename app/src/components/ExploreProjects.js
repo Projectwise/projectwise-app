@@ -9,10 +9,6 @@ import { fetchProjects } from '../actions/project'
 
 class Explore extends Component {
 
-  state = {
-    projects: null
-  }
-
   componentDidMount() {
     this.props.fetchProjects()
   }
