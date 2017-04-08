@@ -20,6 +20,9 @@ exports.getProject = (req, res, next) => {
     .then(project => {
       return res.status(200).json(project)
     })
+    .catch(err => {
+      return next(err)
+    })
 }
 
 exports.postProject = (req, res, next) => {

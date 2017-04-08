@@ -27,8 +27,20 @@ const fetchAllProjects = () => {
   return defaultAPI.get('/projects')
 }
 
+const fetchProject = (projectId) => {
+  return defaultAPI.get(`/projects/${projectId}`)
+}
+
 const setAuthHeaders = (token) => {
   defaultAPI.defaults.headers.common['Authorization'] = token
 }
 
-export default {signup, login, addProject, fetchUser, fetchAllProjects, setAuthHeaders}
+export default {
+  signup,
+  login,
+  addProject,
+  fetchUser,
+  fetchAllProjects,
+  fetchProject,
+  setAuthHeaders
+}

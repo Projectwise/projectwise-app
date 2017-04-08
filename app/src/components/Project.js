@@ -2,39 +2,33 @@ import React, { Component } from 'react'
 import { Container, Header, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
+import { fetchProject } from '../actions/project'
 import Navbar from './Navbar'
 
-const fetchProjectFromState = (projects, projectId) => {
-  projects.forEach((project) => {
-    if(project.slug === projectId) {
-      console.log(project)
-      return project
-    } else {
-      return null
-    }
-  })
-}
 
 class Project extends Component {
 
   state = {
-    project: {}
+    project: this.props.project
   }
 
   componentDidMount() {
-    if(this.props.projects) {
-      this.setState({project: fetchProjectFromState(
-        this.props.projects,
-        this.props.match.params.projectId
-      )})
+    if(!this.state.project) {
+      this.props.fetchProject(this.props.match.params.projectId)
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+      if(nextProps.project) {
+        this.setState({project: nextProps.project})
+      }
   }
 
   render() {
     console.log(this.props)
     const project = this.state.project
 
-    if(!this.state.project) {
+    if(!project) {
       return (
         <Container fluid>
           <Segment basic inverted className='navbar-bg'>
@@ -50,7 +44,7 @@ class Project extends Component {
             <Navbar inverted/>
           </Segment>
           <Container text>
-            <Header as='h1'>{project.title}</Header>
+            <Header as='h1'>{project.name}</Header>
             <p>{project.description}</p>
           </Container>
         </Container>
@@ -59,11 +53,17 @@ class Project extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   console.log("Store state", state)
-  return {
-    projects: state.projects.list
+  if(state.projects.items ){
+    return {
+      project: state.projects.items[ownProps.match.params.projectId]
+    }
+  } else {
+    return {
+      project: null
+    }
   }
 }
 
-export default connect(mapStateToProps, null)(Project)
+export default connect(mapStateToProps, {fetchProject})(Project)

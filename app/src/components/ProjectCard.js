@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const DEFAULT_TEXT_LENGTH = 140
 
@@ -22,7 +23,7 @@ const getTags = (helpFields) => {
 
 
 const ProjectCard = ({project}) => (
-  <Card href={`/projects/${project.slug}`}>
+  <Card as={Link} to={`/projects/${project.slug}`}>
     <Card.Content header={project.name} />
     <Card.Content description={clipText(project.description, DEFAULT_TEXT_LENGTH)} />
     <Card.Content extra>

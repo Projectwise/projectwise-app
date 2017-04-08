@@ -27,10 +27,10 @@ class Explore extends Component {
                 <Loader content='Loading' />
               </Dimmer> :
               <Card.Group>
-                {this.props.projects.map((project) => (
+                {Object.keys(this.props.projects).map((projectId) => (
                   <ProjectCard
-                    key={project._id}
-                    project={project}
+                    key={this.props.projects[projectId]._id}
+                    project={this.props.projects[projectId]}
                   />
                 ))}
               </Card.Group>
@@ -44,7 +44,7 @@ class Explore extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoading: state.projects.isLoading,
-    projects: state.projects.list
+    projects: state.projects.items
   }
 }
 
