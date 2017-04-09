@@ -36,7 +36,7 @@ class ProjectForm extends Component {
     return (
       <FormPage>
         <Header as='h1' textAlign='center'>Add a new project</Header>
-        <Form className='form-padded' onSubmit={this.handleSubmit}>
+        <Form className='margin-top' onSubmit={this.handleSubmit}>
           <Form.Input
             label='Project Name'
             name='name'

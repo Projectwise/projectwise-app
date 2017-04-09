@@ -35,8 +35,12 @@ h3.ui.header.landing-sub-header {
   background-color: #fff;
 }
 
-.form-padded {
+.margin-top {
   margin-top: 2em;
+}
+
+.padding-top {
+  padding-top: 2em;
 }
 
 .inverted-bg {
@@ -46,4 +50,8 @@ h3.ui.header.landing-sub-header {
 
 .text-center {
   text-align: center;
+}
+
+.float-right {
+  float: right;
 }

@@ -10,7 +10,7 @@ class Signup extends Component {
       <FormPage centered>
         <Header as='h1' textAlign='center'>Join Projectwise</Header>
         <p className='text-center'>By signing up, you agree to all the terms and conditions</p>
-          <Form className='form-padded'>
+          <Form className='margin-top'>
             <Form.Group widths='equal'>
               <Form.Field>
                 <Input placeholder='First name' required />

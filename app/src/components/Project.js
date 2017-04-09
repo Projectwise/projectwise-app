@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Header, Segment } from 'semantic-ui-react'
+import { Container, Header, Segment, Divider, Label, Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 import { fetchProject } from '../actions/project'
@@ -43,9 +43,47 @@ class Project extends Component {
           <Segment basic inverted className='navbar-bg'>
             <Navbar inverted/>
           </Segment>
-          <Container text>
-            <Header as='h1'>{project.name}</Header>
-            <p>{project.description}</p>
+          <Container className='padding-top'>
+            <Container text>
+              <Header as='h1' textAlign='center'>
+                {project.name}
+              </Header>
+              <Divider />
+            </Container>
+            <Segment basic>
+              <Grid>
+                <Grid.Column width={11}>
+                  <Header as='h3'>Description</Header>
+                  <p>{project.description}</p>
+                  <Header as='h3'>Help description</Header>
+                  <p>{project.helpDescription}</p>
+                </Grid.Column>
+                <Grid.Column width={5}>
+                  <div>
+                    <Icon name='github'/>URL<span className='float-right'>
+                      <a href={project.meta.projectUrl}>Go to project</a>
+                    </span>
+                  </div>
+                  <Divider />
+                  <div>
+                    <Icon name='tag'/>
+                    Tags
+                    {(project.helpFields.logo) ? <Label className='float-right' horizontal>Logo</Label> : null }
+                    {(project.helpFields.ui) ? <Label className='float-right' horizontal>UI</Label> : null }
+                    {(project.helpFields.logo) ? <Label className='float-right' horizontal>UX</Label> : null }
+                  </div>
+                  <Divider />
+                  {(project.meta.homepage) ?
+                    <div>
+                      <Icon name='globe' />Homepage<span className='float-right'>
+                        <a href={project.meta.homepage}>Go to homepage</a>
+                      </span>
+                      <Divider />
+                    </div> : null
+                  }
+                </Grid.Column>
+              </Grid>
+            </Segment>
           </Container>
         </Container>
       )

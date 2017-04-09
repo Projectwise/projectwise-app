@@ -18,7 +18,7 @@ const getTags = (helpFields) => {
   if(helpFields.ui) tagText.push('UI')
   if(helpFields.ux) tagText.push('UX')
 
-  return tagText.join()
+  return tagText.join(', ')
 }
 
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Container, Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Card, Container, Segment, Dimmer, Loader, Grid} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 import Navbar from './Navbar'
@@ -26,14 +26,18 @@ class Explore extends Component {
               <Dimmer active inverted>
                 <Loader content='Loading' />
               </Dimmer> :
-              <Card.Group>
-                {Object.keys(this.props.projects).map((projectId) => (
-                  <ProjectCard
-                    key={this.props.projects[projectId]._id}
-                    project={this.props.projects[projectId]}
-                  />
-                ))}
-              </Card.Group>
+              <Segment basic>
+                <Grid columns={3} padded>
+                  {Object.keys(this.props.projects).map((projectId) => (
+                    <Grid.Column>
+                      <ProjectCard
+                        key={this.props.projects[projectId]._id}
+                        project={this.props.projects[projectId]}
+                      />
+                    </Grid.Column>
+                  ))}
+                </Grid>
+              </Segment>
             }
         </Container>
       </Container>

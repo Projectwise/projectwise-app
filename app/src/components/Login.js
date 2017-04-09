@@ -42,7 +42,7 @@ class Login extends Component {
       return(
         <FormPage centered>
           <Header as='h1' textAlign='center'>Login to Projectwise</Header>
-          <Form className='form-padded' onSubmit={this.handleSubmit}>
+          <Form className='margin-top' onSubmit={this.handleSubmit}>
             <Form.Field>
               <Input
                 type='email'
