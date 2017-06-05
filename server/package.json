@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/itsyogesh/projectwise#readme",
   "dependencies": {
+    "agenda": "^0.9.1",
     "async": "^2.2.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
@@ -31,6 +32,8 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.1",
     "morgan": "^1.8.1",
+    "nodemailer": "^4.0.1",
+    "nodemailer-mailgun-transport": "^1.3.5",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
