@@ -30,9 +30,7 @@ app.use(cors())
 router(app)
 
 app.use((err, req, res, next) => {
-
-  if(req.app.get('env') !== 'development') {
-
+  if (req.app.get('env') !== 'development') {
   }
   console.log(err)
   return res.status(err.statusCode || 500).json({
@@ -43,12 +41,12 @@ app.use((err, req, res, next) => {
   })
 })
 
-function connectDB() {
-  const options = { server: { socketOptions: {keepAlive: 1}}}
-  return mongoose.connect(process.env.DB, options).connection;
+function connectDB () {
+  const options = {server: {socketOptions: {keepAlive: 1}}}
+  return mongoose.connect(process.env.DB, options).connection
 }
 
-function listen() {
+function listen () {
   app.listen(process.env.PORT)
   console.log('App is running')
 }

@@ -27,6 +27,7 @@
     "body-parser": "^1.17.1",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
     "express": "^4.15.2",
     "express-validator": "^3.1.2",
     "jsonwebtoken": "^7.3.0",
@@ -38,5 +39,13 @@
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
