@@ -3,7 +3,9 @@ import {SIGNUP as signupConstants} from '../config/constants'
 import {USER as userConstants} from '../config/constants'
 
 const initialState = {
-  isLoading: false
+  isLoading: true,
+  isAuthToken: false,
+  isAuthenticated: false
 }
 
 const user = (state = initialState, action) => {
