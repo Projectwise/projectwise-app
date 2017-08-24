@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Container, Segment, Grid} from 'semantic-ui-react'
 
 import Navbar from './Navbar'
@@ -6,9 +7,7 @@ import Navbar from './Navbar'
 const FormPage = (props) => {
   return(
     <Container fluid className='inverted-bg'>
-      <Segment basic inverted className='navbar-bg'>
-        <Navbar inverted/>
-      </Segment>
+      <Navbar inverted/>
       <Grid centered={props.centered} columns={1}>
         <Container text className='block-container'>
           <Segment basic padded>
@@ -18,6 +17,11 @@ const FormPage = (props) => {
       </Grid>
     </Container>
   )
+}
+
+FormPage.propTypes = {
+  centered: PropTypes.bool,
+  children: PropTypes.node.isRequired
 }
 
 export default FormPage

@@ -38,7 +38,8 @@ class Root extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.isAuthenticated
+  isAuthenticated: state.user.isAuthenticated,
+  user: state.user
 })
 
 export default connect(mapStateToProps, { checkAuth, fetchUser })(Root)

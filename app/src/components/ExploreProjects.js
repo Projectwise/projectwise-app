@@ -16,10 +16,8 @@ class Explore extends Component {
   render() {
     console.log('props', this.props)
     return (
-      <Container fluid>
-        <Segment basic inverted className='navbar-bg'>
+      <Container fluid className='inverted-bg'>
           <Navbar inverted/>
-        </Segment>
         <Container>
           {
             (this.props.isLoading) ?

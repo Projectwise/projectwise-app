@@ -1,41 +1,42 @@
-import React, { Component } from 'react'
-import { Menu, Image, Button } from 'semantic-ui-react'
-import { Link, NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Container, Segment, Menu, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
+import RightNav from './RightNav'
+import { getNavbarClassFromType } from '../utils'
 import logo from '../images/Logo.png'
 
-class Navbar extends Component {
-  render() {
-    console.log(this.props.user)
-      const callToAction = (
-        !this.props.isAuthenticated ?
-          <Button as={Link} to='/signup' inverted>Get Started</Button> :
-          <Button as={Link} to='/new' inverted>Add Project</Button>
-       )
-    return (
-      <Menu className='navbar' secondary inverted={this.props.inverted} size='large'>
-        <Menu.Item header>
-          <Image as={Link} to='/' size='small' src={logo}/>
-        </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item as={NavLink} to='/explore'>Explore</Menu.Item>
-          <Menu.Item href='//github.com/itsyogesh/Projectwise' target='_blank'>Github</Menu.Item>
-          <Menu.Item>
-            {callToAction}
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
-    )
+const Navbar = (props) => {
+  let {type, user, inverted} = props
+  let navbarType = 'navbar'
+  let children = null
+
+  if(type) {
+    navbarType = getNavbarClassFromType(type)
+    children = (navbarType === 'masthead' && props.children) ? props.children : null
   }
+
+  return (
+    <Container fluid>
+      <Segment basic className={navbarType}>
+        <Menu inverted secondary size='large'>
+            <Menu.Item header>
+              <Image as={Link} to='/' size='small' src={logo}/>
+            </Menu.Item>
+            <RightNav/>
+          </Menu>
+          {children}
+      </Segment>
+    </Container>
+  )
 }
 
-const mapStateToProps = (state) => {
-
-  return {
-    isAuthenticated: state.isAuthenticated,
-    user: (state.isAuthenticated) ? state.user : null
-  }
+Navbar.propTypes = {
+  user: PropTypes.object,
+  inverted: PropTypes.bool,
+  type: PropTypes.string,
+  children: PropTypes.node
 }
 
-export default connect(mapStateToProps, null)(Navbar)
+export default Navbar

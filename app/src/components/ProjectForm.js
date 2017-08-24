@@ -30,9 +30,9 @@ class ProjectForm extends Component {
   }
 
   render(){
-    if(!this.props.isAuthenticated) {
-      return (<Redirect to='/login' />)
-    }
+    // if(!this.props.isAuthenticated) {
+    //   return (<Redirect to='/login' />)
+    // }
     return (
       <FormPage>
         <Header as='h1' textAlign='center'>Add a new project</Header>
@@ -87,7 +87,7 @@ class ProjectForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Header, Form, Input, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -14,7 +15,8 @@ class Login extends Component {
     password: '',
     errors: {},
     loading: false,
-    done: false
+    done: false,
+    isAuthenticated: false
   }
 
   handleChange = (e, { name, value }) => {
@@ -27,21 +29,23 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     }
-    console.log('credentials', credentials)
     this.props.loginAction(credentials)
-    .catch((err) => {
-      console.log(err)
-    })
   }
 
-  render(){
-    if(this.props.isAuthenticated) return (
-      <Redirect to='/' />
+  componentWillReceiveProps(nextProps){
+    if(this.props.isAuthenticated !== nextProps.isAuthenticated) {
+      this.setState({isAuthenticated: nextProps.isAuthenticated})
+    }
+  }
+
+  render() {
+    if(this.state.isAuthenticated) return (
+      <Redirect to='/' exact/>
     )
     else {
       return(
         <FormPage centered>
-          <Header as='h1' textAlign='center'>Login to Projectwise</Header>
+          <Header as='h1' textAlign='center'>Login to Your Account</Header>
           <Form className='margin-top' onSubmit={this.handleSubmit}>
             <Form.Field>
               <Input
@@ -60,7 +64,7 @@ class Login extends Component {
                 />
             </Form.Field>
             <Segment basic padded textAlign='center'>
-              <Form.Button color='teal' size='large'>Go to my account</Form.Button>
+              <Form.Button primary size='large'>Go to my account</Form.Button>
               <h5><Link to='/forgot'>Forgot Password</Link></h5>
               <h5 className='center'>
                 If you don't have an account, please <Link to='/signup'>signup</Link> here.
@@ -73,9 +77,14 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  loginAction: PropTypes.func.isRequired
+}
+
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated
   }
 }
 
