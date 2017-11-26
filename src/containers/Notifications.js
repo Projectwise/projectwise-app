@@ -11,7 +11,6 @@ const List = styled.ul`
   bottom: 1.2em;
   right: 1.2em;
   min-width: 15em;
-  box-shadow: 0px 2px 4px #8798A4
 `
 
 const Notifications = ({ removeNotification, notifications }) => (
