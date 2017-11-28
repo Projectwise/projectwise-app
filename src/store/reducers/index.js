@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 
 import auth from './auth'
 // import projects from './projects'
@@ -6,6 +7,7 @@ import auth from './auth'
 import notifications from './notifications'
 
 const App = combineReducers({
+  form: formReducer,
   auth,
   // projects,
   // categories,

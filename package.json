@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "formik": "^0.10.4",
     "jwt-decode": "^2.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -24,10 +23,12 @@
     "react-select": "^1.0.1",
     "reactstrap": "^5.0.0-alpha.3",
     "redux": "^3.7.2",
+    "redux-form": "^7.1.2",
     "redux-pack": "^0.1.5",
     "redux-thunk": "^2.2.0",
     "shortid": "^2.2.8",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.2.3",
+    "validator": "^9.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
