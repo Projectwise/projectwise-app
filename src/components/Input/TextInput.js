@@ -7,7 +7,8 @@ const TextInput = ({
   type,
   id,
   helpBlock,
-  meta: { touched, error, warning }
+  meta: { touched, error, warning },
+  ...rest
 }) => (
   <FormGroup row>
     <Col lg={12}>
@@ -17,6 +18,7 @@ const TextInput = ({
         className={`form-control ${touched && error ? 'is-invalid' : null}`}
         {...input}
         type={type}
+        {...rest}
       />
       {touched && helpBlock && error && <span className='invalid-feedback'><small>{error}</small></span>}
     </Col>

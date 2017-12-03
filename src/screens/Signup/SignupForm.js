@@ -25,11 +25,12 @@ class SignupForm extends Component {
   submit (values, dispatch) {
     const userDetails = {
       name: values.name,
+      username: values.username,
       email: values.email,
       password: values.password
     }
     console.log(values)
-    return API.login(userDetails)
+    return API.signup(userDetails)
       .then((response) => {
         if (response.status !== 200) {
           const errors = response.data.errors.details.errors
@@ -54,6 +55,14 @@ class SignupForm extends Component {
           name='name'
           id='name'
           label='Full Name'
+          component={TextInput}
+          validate={[validate.required]}
+        />
+        <Field
+          helpBlock
+          name='username'
+          id='username'
+          label='Username'
           component={TextInput}
           validate={[validate.required]}
         />

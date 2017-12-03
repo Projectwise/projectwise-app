@@ -42,10 +42,17 @@ class Primary extends Component {
         <Nav className='ml-auto' navbar>
           <RNavLink
             tag={NavLink}
+            to='/new'
+            activeClassName='active'
+          >
+            Add Project
+          </RNavLink>
+          <RNavLink
+            tag={NavLink}
             to='/account'
             activeClassName='active'
           >
-            {`${user.first_name} ${user.last_name}`}
+            My Account
           </RNavLink>
         </Nav>
       )
