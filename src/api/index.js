@@ -18,6 +18,9 @@ class API {
   login (userDetails) {
     return this.axios.post('/login', userDetails)
   }
+  getProjects (query) {
+    return this.axios.get('/projects', query)
+  }
 }
 
 export default new API()

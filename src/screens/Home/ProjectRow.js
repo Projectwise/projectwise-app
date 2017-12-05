@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row } from 'reactstrap'
 
-import ProjectCard from '../ProjectCard'
+import ProjectCard from './ProjectCard'
 
 const ProjectRow = ({ projects }) => {
   return (

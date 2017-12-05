@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button, Row } from 'reactstrap'
 import styled from 'styled-components'
 
 import Container from '../../components/Container'
+import ProjectList from './ProjectList'
 import Navbar from '../../containers/Navbar'
 import colors from '../../styles/colors'
 
@@ -34,6 +34,7 @@ class Home extends Component {
             </Row>
           </Container>
         </Navbar>
+        <ProjectList />
       </Container>
     )
   }

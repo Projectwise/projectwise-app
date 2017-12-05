@@ -1,24 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import Container from '../../components/Container'
 import Navbar from '../../containers/Navbar'
 import ProjectForm from './ProjectForm'
-
-const Text = styled.h3`
-  font-weight: bold;
-`
+import colors from '../../styles/colors'
 
 const WrapperContainer = styled(Container)`
-  max-width: 600px;
+  max-width: 700px;
 `
 
 const AddProject = () => {
   return ([
     <Navbar />,
-    <WrapperContainer fluid className='py-5'>
-      <Text className='text-muted mb-5'>Add a new project</Text>
+    <WrapperContainer className='my-1' color={colors.white}>
       <ProjectForm />
     </WrapperContainer>
   ])

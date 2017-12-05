@@ -52,7 +52,7 @@ class Primary extends Component {
             to='/account'
             activeClassName='active'
           >
-            My Account
+            {user.name}
           </RNavLink>
         </Nav>
       )
@@ -80,6 +80,7 @@ class Primary extends Component {
 
   render () {
     const { isAuthenticated, user, children } = this.props
+    console.log(user)
     return (
       <NavbarContainer fluid>
         <Navbar dark expand='md'>

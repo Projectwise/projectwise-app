@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import Container from '../Container'
 
@@ -8,7 +8,7 @@ const WrapperContainer = styled(Container)`
   height: 100%
 `
 
-const load8 = styled.keyframes`
+const load8 = keyframes`
   0% {
     transform: rotate(0deg);
   }

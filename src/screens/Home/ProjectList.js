@@ -6,16 +6,13 @@ import _ from 'lodash'
 
 import Container from '../../components/Container'
 import Preloader from '../../components/Preloader'
+import ProjectRow from './ProjectRow'
 import colors from '../../styles/colors'
 import { getProjects } from '../../store/actions/projects'
 
 const WrapperContainer = styled(Container)`
   width: 100%;
   height: 100%;
-`
-
-const ContentContainer = styled(Container)`
-  max-width: 600px
 `
 
 class ProjectList extends Component {
@@ -25,13 +22,14 @@ class ProjectList extends Component {
   }
 
   render() {
-    const projects = this.props.projects.all.map(this.props.projects.byIds)
-    const projectsChunk = _.chunk(array, [size=3])
+    const { projectsById } = this.props.projects
+    const projectIds = Object.keys(projectsById)
+    let projectsChunk = _.chunk(projectIds, 3)
 
     if(this.props.projects.isLoading) {
       return <Preloader />
     }
-    if(projects && projects.length === 0 ) {
+    if(projectIds && projectIds.length === 0 ) {
       return (
         <WrapperContainer>
           <h5 className='mx-auto my-auto'>No projects found</h5>
@@ -39,13 +37,17 @@ class ProjectList extends Component {
       )
     }
     return (
-      <ContentContainer className='mt-3' color={colors.light}>
-        {projectsChunk.map(projects => (
-          <ProjectRow key={project.id} projects={projects} />
+      <Container className='my-5 pt-4'>
+        {projectsChunk.map((projectIds) => (
+          <ProjectRow key={projectIds[0]} projects={projectIds.map((id => projectsById[id]))} />
         ))}
-      </ContentContainer>
+      </Container>
     )
   }
 }
 
-export default ProjectList
+const mapStateToProps = (state) => ({
+  projects: state.projects
+})
+
+export default connect(mapStateToProps, { getProjects })(ProjectList)
