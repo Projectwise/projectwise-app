@@ -7,10 +7,10 @@ import Notification from '../components/Notification'
 import { removeNotification } from '../store/actions/notifications'
 
 const List = styled.ul`
-  position: 'fixed';
+  position: fixed;
   bottom: 1.2em;
   right: 1.2em;
-  min-width: 15em;
+  min-width: 240px;
 `
 
 const Notifications = ({ removeNotification, notifications }) => (

@@ -7,7 +7,9 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink as RNavLink
+  NavLink as RNavLink,
+  NavItem,
+  Button
 } from 'reactstrap'
 
 import Container from '../Container'
@@ -40,13 +42,15 @@ class Primary extends Component {
     if (isAuthenticated) {
       return (
         <Nav className='ml-auto' navbar>
-          <RNavLink
-            tag={NavLink}
-            to='/new'
-            activeClassName='active'
-          >
-            Add Project
-          </RNavLink>
+          <NavItem>
+            <Button
+              tag={Link}
+              to='/new'
+              color='link'
+            >
+              Add Project
+            </Button>
+          </NavItem>
           <RNavLink
             tag={NavLink}
             to='/account'

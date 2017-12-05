@@ -7,7 +7,8 @@ import validate from '../../config/validator'
 import { TextInput, SelectInput, TextArea } from '../../components/Input'
 
 import API from '../../api'
-import signup from '../../store/actions/signup'
+import { addNotification } from '../../store/actions/notifications'
+import { getProjects } from '../../store/actions/projects'
 
 const FullButton = styled(Button)`
   width: 100%;
@@ -27,24 +28,31 @@ class ProjectForm extends Component {
   }
 
   submit (values, dispatch) {
-    const userDetails = {
+    const { reset } = this.props
+    const projectDetails = {
       title: values.title,
       projectUrl: values.projectUrl,
-      description: values.description
+      description: values.description,
+      helpDescription: values.helpDescription,
+      categories: values.categories.map(category => category.value)
     }
     console.log(values)
-    return API.login(userDetails)
+    return API.addProject(projectDetails)
       .then((response) => {
         if (response.status !== 200) {
           const errors = response.data.errors.details.errors
           if (errors.email) {
             throw new SubmissionError({
-              email: errors.email.msg,
+              title: errors.title.msg,
               _error: 'Something went wrong'
             })
           }
         } else {
-          dispatch(signup(response.data.user))
+          dispatch(addNotification({
+            text: `New Project added`
+          }))
+          reset()
+          dispatch(getProjects())
         }
       })
   }

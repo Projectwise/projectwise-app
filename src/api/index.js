@@ -21,6 +21,9 @@ class API {
   getProjects (query) {
     return this.axios.get('/projects', query)
   }
+  addProject (projectDetails) {
+    return this.axios.post('/projects', projectDetails)
+  }
 }
 
 export default new API()

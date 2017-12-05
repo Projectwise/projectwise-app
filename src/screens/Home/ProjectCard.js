@@ -3,12 +3,13 @@ import { Col,
   Card as RCard,
   CardSubtitle,
   CardBody,
-  CardText,
+  CardText as RCardText,
   CardTitle as RCardTitle,
   Badge as RBadge
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { ellipsis } from 'polished'
 
 import colors from '../../styles/colors'
 
@@ -29,6 +30,10 @@ const FooterText = styled.p`
 
 const CardTitle = styled(RCardTitle)`
   font-weight: bold;
+`
+
+const CardText = styled(RCardText)`
+  ${ellipsis('400px')}
 `
 
 const Badge = styled(RBadge)`
