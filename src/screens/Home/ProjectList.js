@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { Card } from 'reactstrap'
 import _ from 'lodash'
 
 import Container from '../../components/Container'
 import Preloader from '../../components/Preloader'
 import ProjectRow from './ProjectRow'
-import colors from '../../styles/colors'
 import { getProjects } from '../../store/actions/projects'
 
 const WrapperContainer = styled(Container)`
@@ -16,20 +14,19 @@ const WrapperContainer = styled(Container)`
 `
 
 class ProjectList extends Component {
-
-  componentDidMount() {
+  componentDidMount () {
     this.props.getProjects()
   }
 
-  render() {
+  render () {
     const { projectsById } = this.props.projects
     const projectIds = Object.keys(projectsById)
     let projectsChunk = _.chunk(projectIds, 3)
 
-    if(this.props.projects.isLoading) {
+    if (this.props.projects.isLoading) {
       return <Preloader />
     }
-    if(projectIds && projectIds.length === 0 ) {
+    if (projectIds && projectIds.length === 0) {
       return (
         <WrapperContainer>
           <h5 className='mx-auto my-auto'>No projects found</h5>
@@ -39,7 +36,7 @@ class ProjectList extends Component {
     return (
       <Container className='my-5 pt-4'>
         {projectsChunk.map((projectIds) => (
-          <ProjectRow key={projectIds[0]} projects={projectIds.map((id => projectsById[id]))} />
+          <ProjectRow key={projectIds[0]} projects={projectIds.map(id => projectsById[id])} />
         ))}
       </Container>
     )

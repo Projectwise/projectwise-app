@@ -21,6 +21,9 @@ class API {
   getProjects (query) {
     return this.axios.get('/projects', query)
   }
+  getProject (projectId) {
+    return this.axios.get(`/projects/${projectId}`)
+  }
   addProject (projectDetails) {
     return this.axios.post('/projects', projectDetails)
   }
