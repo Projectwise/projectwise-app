@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Margin from '../../components/Margin'
@@ -23,11 +24,17 @@ const ProjectPage = ({ project }) => {
   } = project
   console.log(project)
   return (
-    <WrappedContainer color={colors.white} className='my-5 py-5 px-4'>
+    <WrappedContainer color={colors.white} className='my-5 pt-5 px-4'>
       <h3>{title}</h3>
       <div className='d-flex justify-content-between pt-3'>
         <div>
-          <a href={projectUrl}><i className='fa fa-globe' />&nbsp;{projectUrl}</a>
+          <span>
+            <i className='fa fa-globe' />
+            <a href={projectUrl}>&nbsp;{projectUrl}</a>
+          </span>
+        </div>
+        <div>
+          <span><i className='fa fa-user-circle-o' />&nbsp;<Link to={addedBy.username}>{addedBy.username}</Link></span>
         </div>
         <div>
           {categories && categories.map((category, index) => (
