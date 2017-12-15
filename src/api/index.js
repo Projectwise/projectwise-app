@@ -3,7 +3,7 @@ import axios from 'axios'
 class API {
   constructor () {
     this.axios = axios.create({
-      baseURL: 'http://localhost:8080/api'
+      baseURL: process.env.PUBLIC_URL
     })
   }
   setAuthHeader (token) {
