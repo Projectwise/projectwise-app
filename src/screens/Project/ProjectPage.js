@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Container from '../../components/Container'
 import Margin from '../../components/Margin'
 import Badge from '../../components/Badge'
+import LikeButton from '../../containers/LikeButton'
 import colors from '../../styles/colors'
 
 const WrappedContainer = styled(Container)`
@@ -19,7 +20,6 @@ const ProjectPage = ({ project }) => {
     categories,
     helpDescription,
     addedBy,
-    likeCount,
     commentsCount
   } = project
   console.log(project)
@@ -49,9 +49,7 @@ const ProjectPage = ({ project }) => {
       <p>{helpDescription}</p>
       <Margin className='mt-4 mb-2' />
       <div className='d-flex justify-content-between pt-2'>
-        <div>
-          <p className='text-muted'><i className='fa fa-heart-o' />&nbsp;{likeCount} Likes</p>
-        </div>
+        <LikeButton project={project} />
         <div>
           <p className='text-muted'>{commentsCount} Comments</p>
         </div>

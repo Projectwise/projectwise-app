@@ -29,7 +29,7 @@ class Home extends Component {
             <SubHeader className='text-center mt-5 pt-3'>Find open source projects and help them improve their user interface and experience.</SubHeader>
             <Row className='pb-4'>
               <FullButton color='primary' className='mx-auto mt-4 mb-5' size='lg'>
-                Explore Projects&nbsp;&nbsp;<i class='fa fa-arrow-right' aria-hidden='true' />
+                Explore Projects&nbsp;&nbsp;<i className='fa fa-arrow-right' aria-hidden='true' />
               </FullButton>
             </Row>
           </Container>

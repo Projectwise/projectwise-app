@@ -24,8 +24,17 @@ class API {
   getProject (projectId) {
     return this.axios.get(`/projects/${projectId}`)
   }
+  likeProject (projectId) {
+    return this.axios.post(`/projects/${projectId}/like`)
+  }
+  dislikeProject (projectId) {
+    return this.axios.delete(`/projects/${projectId}/like`)
+  }
   addProject (projectDetails) {
     return this.axios.post('/projects', projectDetails)
+  }
+  getCategories () {
+    return this.axios.get('/categories')
   }
 }
 

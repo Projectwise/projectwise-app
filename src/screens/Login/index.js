@@ -18,7 +18,8 @@ const Text = styled.h3`
   font-weight: bold;
 `
 
-const Login = ({ auth }) => {
+const Login = ({ permission, auth }) => {
+  console.log('permission', permission)
   if (auth.isAuthenticated) {
     return (<Redirect to='/' />)
   }

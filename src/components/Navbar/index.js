@@ -7,9 +7,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink as RNavLink,
-  NavItem,
-  Button
+  NavLink as RNavLink
 } from 'reactstrap'
 
 import Container from '../Container'
@@ -42,21 +40,19 @@ class Primary extends Component {
     if (isAuthenticated) {
       return (
         <Nav className='ml-auto' navbar>
-          <NavItem>
-            <Button
-              tag={Link}
-              to='/new'
-              color='link'
-            >
-              Add Project
-            </Button>
-          </NavItem>
+          <RNavLink
+            tag={NavLink}
+            to='/new'
+            activeClassName='active'
+          >
+            Add Project
+          </RNavLink>
           <RNavLink
             tag={NavLink}
             to='/account'
             activeClassName='active'
           >
-            {user.name}
+            My Account
           </RNavLink>
         </Nav>
       )
@@ -88,10 +84,11 @@ class Primary extends Component {
     return (
       <NavbarContainer fluid>
         <Navbar dark expand='md'>
-          <NavbarBrand>
-            <Link to='/'>
-              <img src={logo} alt='' />
-            </Link>
+          <NavbarBrand
+            tag={Link}
+            to='/'
+          >
+            <img src={logo} alt='' />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

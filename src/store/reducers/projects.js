@@ -1,6 +1,11 @@
 import { handle } from 'redux-pack'
 
-import { GET_PROJECTS, GET_PROJECT } from '../constants'
+import {
+  GET_PROJECTS,
+  GET_PROJECT,
+  LIKE_PROJECT,
+  DISLIKE_PROJECT
+} from '../constants'
 
 const initialState = {
   isLoading: false,
@@ -66,6 +71,12 @@ const projects = (state = initialState, action) => {
       return handle(state, action, handleProjects(payload))
 
     case GET_PROJECT:
+      return handle(state, action, handleProject(payload))
+
+    case LIKE_PROJECT:
+      return handle(state, action, handleProject(payload))
+
+    case DISLIKE_PROJECT:
       return handle(state, action, handleProject(payload))
 
     default:

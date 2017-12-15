@@ -44,8 +44,7 @@ const ProjectCard = ({ project }) => {
     <Col lg={4}>
       <Card className='px-4 pt-4' tag={Link} to={`projects/${slug}`}>
         <CardTitle>{project.title}</CardTitle>
-        <CardSubtitle className='text-muted'>added by&nbsp;
-          <Link to={`/users/${addedBy.username}`}>{addedBy.username}</Link></CardSubtitle>
+        <CardSubtitle><span className='text-muted'>added by</span>&nbsp;{addedBy.username}</CardSubtitle>
         <div className='my-2'>
           {project.categories && project.categories.map((category, index) => (
             <Badge key={index} color='info'>{category}</Badge>
