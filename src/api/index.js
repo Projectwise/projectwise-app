@@ -1,9 +1,13 @@
 import axios from 'axios'
 
+const PUBLIC_URI = process.env.NODE_ENV === 'production'
+  ? process.env.PUBLIC_URL
+  : 'http://localhost:8080/api'
+
 class API {
   constructor () {
     this.axios = axios.create({
-      baseURL: `${process.env.PUBLIC_URL}/api`
+      baseURL: `${PUBLIC_URI}/api`
     })
   }
   setAuthHeader (token) {

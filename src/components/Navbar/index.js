@@ -7,7 +7,12 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavLink as RNavLink
+  NavLink as RNavLink,
+  NavItem as RNavItem,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownToggle as RDropdownToggle,
+  DropdownItem
 } from 'reactstrap'
 
 import Container from '../Container'
@@ -18,6 +23,26 @@ const Navbar = styled(RNavbar)`
 `
 const NavbarContainer = styled(Container)`
   background: linear-gradient(to right, #141E30, #243B55);
+`
+
+const DropdownToggle = styled(RDropdownToggle)`
+  font-weight: 400;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 `
 
 class Primary extends Component {
@@ -36,7 +61,7 @@ class Primary extends Component {
     })
   }
 
-  rightNav (isAuthenticated, user) {
+  rightNav (isAuthenticated, user, onLogout) {
     if (isAuthenticated) {
       return (
         <Nav className='ml-auto' navbar>
@@ -47,13 +72,17 @@ class Primary extends Component {
           >
             Add Project
           </RNavLink>
-          <RNavLink
-            tag={NavLink}
-            to='/account'
-            activeClassName='active'
-          >
-            My Account
-          </RNavLink>
+          <RNavItem>
+            <UncontrolledDropdown>
+              <DropdownToggle caret>
+                My Account
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem>Profile</DropdownItem>
+                <DropdownItem onClick={onLogout}>Logout</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </RNavItem>
         </Nav>
       )
     } else {
@@ -79,7 +108,7 @@ class Primary extends Component {
   }
 
   render () {
-    const { isAuthenticated, user, children } = this.props
+    const { isAuthenticated, user, onLogout, children } = this.props
     console.log(user)
     return (
       <NavbarContainer fluid>
@@ -92,7 +121,7 @@ class Primary extends Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            {this.rightNav(isAuthenticated, user)}
+            {this.rightNav(isAuthenticated, user, onLogout)}
           </Collapse>
         </Navbar>
         {children || null}
