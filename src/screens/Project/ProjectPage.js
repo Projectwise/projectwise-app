@@ -9,7 +9,8 @@ import LikeButton from '../../containers/LikeButton'
 import colors from '../../styles/colors'
 
 const WrappedContainer = styled(Container)`
-  max-width: 600px
+  max-width: 600px;
+  min-height: calc(100vh - 130px);
 `
 
 const ProjectPage = ({ project }) => {
@@ -22,9 +23,9 @@ const ProjectPage = ({ project }) => {
     addedBy,
     commentsCount
   } = project
-  console.log(project)
+
   return (
-    <WrappedContainer color={colors.white} className='my-5 pt-5 px-4'>
+    <WrappedContainer color={colors.white} className='pt-5 px-4'>
       <h3>{title}</h3>
       <div className='d-flex justify-content-between pt-3'>
         <div>

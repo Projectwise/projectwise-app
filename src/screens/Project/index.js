@@ -6,15 +6,16 @@ import Container from '../../components/Container'
 import Preloader from '../../components/Preloader'
 import Navbar from '../../containers/Navbar'
 import ProjectPage from './ProjectPage'
+import colors from '../../styles/colors'
 import { getProject } from '../../store/actions/projects'
 
 const WrapperContainer = styled(Container)`
-  max-width: 600px;
+  min-height: calc(100vh - 140px);
 `
 
 const NotFoundContainer = () => ([
   <Navbar />,
-  <WrapperContainer>
+  <WrapperContainer color={colors.white}>
     <h3 className='py-5'>No such project exists</h3>
   </WrapperContainer>
 ])
@@ -33,10 +34,12 @@ class Project extends Component {
     } else if (!projects.projectsById[projectId]) {
       return (<NotFoundContainer />)
     } else {
-      return ([
-        <Navbar />,
-        <ProjectPage project={projects.projectsById[projectId]} />
-      ])
+      return (
+        <WrapperContainer fluid color={colors.white}>
+          <Navbar />
+          <ProjectPage project={projects.projectsById[projectId]} />
+        </WrapperContainer>
+      )
     }
   }
 }
