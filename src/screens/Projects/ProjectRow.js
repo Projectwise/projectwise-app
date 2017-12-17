@@ -5,7 +5,7 @@ import ProjectCard from './ProjectCard'
 
 const ProjectRow = ({ projects }) => {
   return (
-    <Row className='mb-4'>
+    <Row className='pb-4'>
       { projects.map(project => <ProjectCard key={project.id} project={project} />) }
     </Row>
   )

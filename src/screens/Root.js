@@ -9,9 +9,9 @@ import Container from '../components/Container'
 import Home from './Home'
 import Login from './Login'
 import Signup from './Signup'
+import Projects from './Projects'
 import Project from './Project'
 import AddProject from './AddProject'
-// import Orders from './Orders'
 
 const Root = () => {
   return (
@@ -19,6 +19,7 @@ const Root = () => {
       <Switch>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
+        <Route path='/projects' component={Projects} />
         <Route path='/projects/:projectId' component={Project} />
         <PrivateRoute path='/new' component={AddProject} />
         <Route path='/' component={Home} />

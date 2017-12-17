@@ -9,14 +9,20 @@ import Container from '../../components/Container'
 import Preloader from '../../components/Preloader'
 import ProjectRow from './ProjectRow'
 import { getProjects } from '../../store/actions/projects'
+import colors from '../../styles/colors'
 
 const WrapperContainer = styled(Container)`
-  min-height: 50vh;
+  min-height: calc(100vh - 140px);
 `
 
 const FullButton = styled(Button)`
   font-size: 1rem;
   font-weight: bold;
+`
+
+const Header = styled.h4`
+  color: ${props => props.color || colors.white}
+  font-weight: 600;
 `
 
 class ProjectList extends Component {
@@ -34,20 +40,23 @@ class ProjectList extends Component {
     }
     if (projectIds && projectIds.length === 0) {
       return (
-        <WrapperContainer className='d-flex flex-column align-items-center justify-content-center'>
-          <h5 className='mx-auto my-auto'>No projects found</h5>
-          <FullButton tag={Link} to='/new' color='primary' className='mx-auto mt-4 mb-5' size='lg'>
-            Add a new project&nbsp;&nbsp;<i className='fa fa-arrow-right' aria-hidden='true' />
-          </FullButton>
+        <WrapperContainer color={colors.white} className='d-flex flex-column align-items-center justify-content-center'>
+          <div>
+            <h4>No projects found</h4>
+            <FullButton tag={Link} to='/new' color='primary' className='mx-auto mt-4 mb-5' size='lg'>
+              Add a new project&nbsp;&nbsp;<i className='fa fa-arrow-right' aria-hidden='true' />
+            </FullButton>
+          </div>
         </WrapperContainer>
       )
     }
     return (
-      <Container className='my-5 pt-4'>
+      <WrapperContainer color={colors.white} className='py-5'>
+        <Header color={colors.light} className='mb-4'>All Projects </Header>
         {projectsChunk.map((projectIds) => (
           <ProjectRow key={projectIds[0]} projects={projectIds.map(id => projectsById[id])} />
         ))}
-      </Container>
+      </WrapperContainer>
     )
   }
 }

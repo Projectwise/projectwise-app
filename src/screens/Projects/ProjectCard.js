@@ -17,7 +17,8 @@ const Card = styled(RCard)`
   border-radius: 3px;
   min-width: 300px;
   cursor: pointer;
-  box-shadow: 0 2px 4px #8798A4;
+  box-shadow: none;
+  border: 2px solid ${colors.light};
   text-decoration: none;
   &:hover {
     box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);

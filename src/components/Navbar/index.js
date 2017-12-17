@@ -65,8 +65,12 @@ class Primary extends Component {
     if (isAuthenticated) {
       return (
         <Nav className='ml-auto' navbar>
-          <RNavLink href='https://github.com/Projectwise/'>
-            Github <i className='fa fa-github' />
+          <RNavLink
+            tag={NavLink}
+            to='/projects'
+            activeClassName='active'
+          >
+            Projects
           </RNavLink>
           <RNavLink
             tag={NavLink}
@@ -86,13 +90,20 @@ class Primary extends Component {
               </DropdownMenu>
             </UncontrolledDropdown>
           </RNavItem>
+          <RNavLink href='https://github.com/Projectwise/'>
+            Github <i className='fa fa-github' />
+          </RNavLink>
         </Nav>
       )
     } else {
       return (
         <Nav className='ml-auto' navbar>
-          <RNavLink href='https://github.com/Projectwise/'>
-            Github <i className='fa fa-github' />
+          <RNavLink
+            tag={NavLink}
+            to='/projects'
+            activeClassName='active'
+          >
+            Projects
           </RNavLink>
           <RNavLink
             tag={NavLink}
@@ -107,6 +118,9 @@ class Primary extends Component {
             activeClassName='active'
           >
             Signup
+          </RNavLink>
+          <RNavLink href='https://github.com/Projectwise/'>
+            Github <i className='fa fa-github' />
           </RNavLink>
         </Nav>
       )

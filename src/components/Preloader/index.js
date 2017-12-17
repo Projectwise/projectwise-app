@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import Container from '../Container'
+import colors from '../../styles/colors'
 
 const WrapperContainer = styled(Container)`
   width: 100%;
@@ -19,16 +20,16 @@ const load8 = keyframes`
 
 const LoaderDiv = styled.div`
   border-radius: 50%;
-  width: 10em;
-  height: 10em;
+  width: 5em;
+  height: 5em;
   margin: 60px auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #ffffff;
+  border-top: 0.6em solid rgba(0, 0, 0, 0.2);
+  border-right: 0.6em solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0.6em solid rgba(0, 0, 0, 0.2);
+  border-left: 0.6em solid #000000;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -43,7 +44,7 @@ const LoaderDiv = styled.div`
 `
 
 export default () => (
-  <WrapperContainer className='mx-auto my-auto'>
+  <WrapperContainer color={colors.white} className='mx-auto my-auto'>
     <LoaderDiv />
   </WrapperContainer>
 )
