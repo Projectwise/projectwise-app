@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Margin from '../../components/Margin'
@@ -20,8 +19,7 @@ const ProjectPage = ({ project }) => {
     projectUrl,
     categories,
     helpDescription,
-    addedBy,
-    commentsCount
+    addedBy
   } = project
 
   return (
@@ -35,7 +33,7 @@ const ProjectPage = ({ project }) => {
           </span>
         </div>
         <div>
-          <span><i className='fa fa-user-circle-o' />&nbsp;<Link to={addedBy.username}>{addedBy.username}</Link></span>
+          <span><i className='fa fa-user-circle-o' />&nbsp;{addedBy.username}</span>
         </div>
         <div>
           {categories && categories.map((category, index) => (
@@ -52,7 +50,7 @@ const ProjectPage = ({ project }) => {
       <div className='d-flex justify-content-between pt-2'>
         <LikeButton project={project} />
         <div>
-          <p className='text-muted'>{commentsCount} Comments</p>
+          <p className='text-muted'>No comments</p>
         </div>
       </div>
     </WrappedContainer>

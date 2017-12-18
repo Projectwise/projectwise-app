@@ -40,7 +40,7 @@ const CardText = styled(RCardText)`
 `
 
 const ProjectCard = ({ project }) => {
-  const { slug, addedBy, commentsCount, likeCount } = project
+  const { slug, addedBy, likeCount } = project
   return (
     <Col lg={4}>
       <Card className='px-4 pt-4' tag={Link} to={`projects/${slug}`}>
@@ -54,7 +54,7 @@ const ProjectCard = ({ project }) => {
         <CardText>{project.description}</CardText>
         <Margin />
         <div className='px-2 py-2'>
-          <FooterText className='text-muted float-left'>{commentsCount} comments</FooterText>
+          <FooterText className='text-muted float-left'>No comments</FooterText>
           <FooterText className='text-muted float-right'>{likeCount} likes</FooterText>
         </div>
       </Card>
