@@ -9,7 +9,11 @@ const SelectInput = ({
   id,
   helpBlock,
   options,
-  values = [{value: 'ui', label: 'UI'}, {value: 'ux', label: 'User Experience'}],
+  values = [
+    {value: 'ui', label: 'User Interface'},
+    {value: 'ux', label: 'User Experience'},
+    {value: 'logo', label: 'Logo'}
+  ],
   meta: { touched, error, warning },
   ...rest
 }) => (
