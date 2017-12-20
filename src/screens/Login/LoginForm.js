@@ -82,12 +82,12 @@ class LoginForm extends Component {
               type='submit'
               disabled={submitting}
             >
-              Login&nbsp;&nbsp;<i class='fa fa-arrow-right' aria-hidden='true' />
+              Login&nbsp;&nbsp;<i className='fa fa-arrow-right' aria-hidden='true' />
             </FullButton>
           </Col>
           <Col lg={6}>
             <FullButton color='secondary'>
-              <i class='fa fa-github' aria-hidden='true' />&nbsp;&nbsp;Login with Github
+              <i className='fa fa-github' aria-hidden='true' />&nbsp;&nbsp;Login with Github
             </FullButton>
           </Col>
         </FormGroup>
