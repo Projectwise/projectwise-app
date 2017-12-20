@@ -85,7 +85,15 @@ class Primary extends Component {
                 My Account
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem>Profile</DropdownItem>
+                <DropdownItem>
+                  <RNavLink
+                    tag={NavLink}
+                    to='/profile'
+                    style={{color: '#000'}}
+                  >
+                    Profile
+                  </RNavLink>
+                </DropdownItem>
                 <DropdownItem onClick={onLogout}>Logout</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

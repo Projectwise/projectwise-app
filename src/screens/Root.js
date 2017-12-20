@@ -12,6 +12,7 @@ import Signup from './Signup'
 import Projects from './Projects'
 import Project from './Project'
 import AddProject from './AddProject'
+import Profile from './Profile'
 
 const Root = () => {
   return (
@@ -22,6 +23,7 @@ const Root = () => {
         <PrivateRoute path='/new' component={AddProject} />
         <Route path='/projects/:projectId' component={Project} />
         <Route path='/projects' component={Projects} />
+        <Route path='/profile' component={Profile} />
         <Route path='/' component={Home} />
       </Switch>
       <Footer />
