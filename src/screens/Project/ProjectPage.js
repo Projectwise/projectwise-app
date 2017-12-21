@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Disqus from '../../components/Disqus'
 import Container from '../../components/Container'
 import Margin from '../../components/Margin'
 import Badge from '../../components/Badge'
@@ -14,6 +15,7 @@ const WrappedContainer = styled(Container)`
 
 const ProjectPage = ({ project }) => {
   const {
+    id,
     title,
     description,
     projectUrl,
@@ -21,6 +23,13 @@ const ProjectPage = ({ project }) => {
     helpDescription,
     addedBy
   } = project
+
+  const disqusShortname = 'projectwise-1'
+  const disqusConfig = {
+    url: window.location.href,
+    identifier: id || title,
+    title: title
+  }
 
   return (
     <WrappedContainer color={colors.white} className='pt-5 px-4'>
@@ -53,6 +62,7 @@ const ProjectPage = ({ project }) => {
           <p className='text-muted'>No comments</p>
         </div>
       </div>
+      <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </WrappedContainer>
   )
 }
