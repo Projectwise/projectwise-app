@@ -49,7 +49,7 @@ class Footer extends Component {
         <Navbar dark expand='md'>
           <Nav navbar className='mx-auto'>
             <NavItem>
-              Created with <ColoredSpan><i className='fa fa-heart' /></ColoredSpan> by <a href='https://twitter.com/itsyogesh18'>@itsyogesh18</a>
+              Created with <ColoredSpan><i className='fa fa-heart' /></ColoredSpan> by <a href='https://twitter.com/itsyogesh18'>@itsyogesh18</a> and <a href='https://twitter.com/niklabh'>@niklabh</a>
             </NavItem>
           </Nav>
         </Navbar>
