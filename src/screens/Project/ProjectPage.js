@@ -59,7 +59,7 @@ const ProjectPage = ({ project }) => {
       <div className='d-flex justify-content-between pt-2'>
         <LikeButton project={project} />
       </div>
-      <Container className='pb-4 mb-4'>
+      <Container className='pb-4' color={colors.white}>
         <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </Container>
     </WrappedContainer>
