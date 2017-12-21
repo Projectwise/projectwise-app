@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "firebase": "^4.8.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.4",
     "polished": "^1.9.0",
