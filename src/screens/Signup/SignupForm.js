@@ -5,9 +5,7 @@ import styled from 'styled-components'
 
 import validate from '../../config/validator'
 import { TextInput } from '../../components/Input'
-
-import API from '../../api'
-import signup from '../../store/actions/signup'
+import firebase from '../../firebase'
 
 const FullButton = styled(Button)`
   width: 100%;
@@ -30,19 +28,34 @@ class SignupForm extends Component {
       password: values.password
     }
     console.log(values)
-    return API.signup(userDetails)
-      .then((response) => {
-        if (response.status !== 200) {
-          const errors = response.data.errors.details.errors
-          if (errors.email) {
-            throw new SubmissionError({
-              email: errors.email.msg,
-              _error: 'Something went wrong'
-            })
+    firebase.auth().createUserWithEmailAndPassword(values.email, values.password)
+      .then((user) => {
+        console.log('signed up', user)
+        user.updateProfile({
+          displayName: values.name,
+          metadata: {
+            username: values.username
           }
-        } else {
-          dispatch(signup(response.data.user))
-        }
+        }).then(() => {
+          // Update successful.
+          console.log("updated")
+        }).catch((error) => {
+          // An error happened.
+          console.log(error)
+        })
+
+        firebase.database().ref('users/' + user.uid).set({
+          name: values.name,
+          username: values.username
+        })
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code
+        var errorMessage = error.message
+
+        console.log(errorCode, errorMessage)
+        // ...
       })
   }
 

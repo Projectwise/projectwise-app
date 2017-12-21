@@ -1,12 +1,8 @@
-/* global localStorage */
-
 import { LOGOUT } from '../constants'
-import API from '../../api'
+import firebase from '../../firebase'
 
 const logout = () => {
-  localStorage.removeItem('token')
-  API.removeAuthHeader()
-
+  firebase.auth().signOut()
   return {
     type: LOGOUT
   }

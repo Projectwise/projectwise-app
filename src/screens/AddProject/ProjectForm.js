@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, FormGroup, Col, Button } from 'reactstrap'
 import { Field, reduxForm, SubmissionError } from 'redux-form'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 
 import validate from '../../config/validator'
 import { TextInput, SelectInput, TextArea } from '../../components/Input'
@@ -9,6 +10,7 @@ import { TextInput, SelectInput, TextArea } from '../../components/Input'
 import API from '../../api'
 import { addNotification } from '../../store/actions/notifications'
 import { getProjects } from '../../store/actions/projects'
+import firebase from '../../firebase'
 
 const FullButton = styled(Button)`
   width: 100%;
@@ -37,23 +39,29 @@ class ProjectForm extends Component {
       categories: values.categories.map(category => category.value)
     }
     console.log(values)
-    return API.addProject(projectDetails)
-      .then((response) => {
-        if (response.status !== 200) {
-          const errors = response.data.errors.details.errors
-          if (errors.email) {
-            throw new SubmissionError({
-              title: errors.title.msg,
-              _error: 'Something went wrong'
-            })
-          }
-        } else {
-          dispatch(addNotification({
-            text: `New Project added`
-          }))
-          reset()
-          dispatch(getProjects())
-        }
+
+    const user = firebase.auth().currentUser
+    if (!user) {
+      return (<Redirect to='/login' />)
+    }
+    // Get a key for a new Post.
+    const projectId = firebase.database().ref().child('projects').push().key
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {}
+    updates['/projects/' + projectId] = projectDetails
+    updates['/users/' + user.uid + '/projects/' + projectId] = true
+
+    return firebase.database().ref().update(updates)
+      .then(() => {
+        dispatch(addNotification({
+          text: `New Project added`
+        }))
+        reset()
+      })
+      .catch((error) => {
+        dispatch(addNotification({
+          text: `Error: ${error.errorMessage}`
+        }))
       })
   }
 

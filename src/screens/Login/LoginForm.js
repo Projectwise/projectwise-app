@@ -5,9 +5,7 @@ import styled from 'styled-components'
 
 import validate from '../../config/validator'
 import { TextInput } from '../../components/Input'
-
-import API from '../../api'
-import login from '../../store/actions/login'
+import firebase from '../../firebase'
 
 const FullButton = styled(Button)`
   width: 100%;
@@ -28,20 +26,13 @@ class LoginForm extends Component {
       password: values.password
     }
     console.log(values)
-    return API.login(userDetails)
-      .then((response) => {
-        if (response.status !== 200) {
-          const errors = response.data.errors.details.errors
-          if (errors.email) {
-            throw new SubmissionError({
-              email: errors.email.msg,
-              _error: 'Something went wrong'
-            })
-          }
-        } else {
-          dispatch(login(response.data.user))
-        }
-      })
+    firebase.auth().signInWithEmailAndPassword(values.email, values.password).catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+      console.log(errorCode, errorMessage)
+    })
   }
 
   render () {

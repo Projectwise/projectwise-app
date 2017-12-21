@@ -1,12 +1,6 @@
-/* global localStorage */
-
 import { SIGNUP } from '../constants'
-import API from '../../api'
 
-const signup = (user) => {
-  API.setAuthHeader(user.token)
-  localStorage.setItem('token', user.token)
-  delete user.token
+const signup = (user) => (dispatch) => {
   return {
     type: SIGNUP,
     payload: {
