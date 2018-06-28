@@ -7,11 +7,13 @@ import { Col,
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { CommentCount } from 'disqus-react'
 import { ellipsis } from 'polished'
 
 import Margin from '../../components/Margin'
 import Badge from '../../components/Badge'
 import colors from '../../styles/colors'
+import { shortName } from '../../config/disqus'
 
 const Card = styled(RCard)`
   border-radius: 3px;
@@ -20,8 +22,9 @@ const Card = styled(RCard)`
   box-shadow: none;
   border: 2px solid ${colors.light};
   text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   &:hover {
-    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+    border: 2px solid ${colors.dark};
     text-decoration: none;
   }
 `
@@ -40,11 +43,16 @@ const CardText = styled(RCardText)`
 `
 
 const ProjectCard = ({ project }) => {
-  const { slug, addedBy, likeCount } = project
+  const { slug, addedBy, title, likeCount } = project
+  const disqusConfig = {
+    url: `${process.env.PUBLIC_URL}/projects/${slug}`,
+    identifier: slug,
+    title: title
+  }
   return (
     <Col lg={4}>
       <Card className='px-4 pt-4' tag={Link} to={`projects/${slug}`}>
-        <CardTitle>{project.title}</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardSubtitle><span className='text-muted'>added by</span>&nbsp;{addedBy.username}</CardSubtitle>
         <div className='my-2'>
           {project.categories && project.categories.map((category, index) => (
@@ -54,7 +62,9 @@ const ProjectCard = ({ project }) => {
         <CardText>{project.description}</CardText>
         <Margin />
         <div className='px-2 py-2'>
-          <FooterText className='text-muted float-left'>No comments</FooterText>
+          <FooterText className='text-muted float-left'>
+            <CommentCount shortName={shortName} config={disqusConfig}> comments </CommentCount>
+          </FooterText>
           <FooterText className='text-muted float-right'>{likeCount} likes</FooterText>
         </div>
       </Card>

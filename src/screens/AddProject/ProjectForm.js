@@ -106,7 +106,7 @@ class ProjectForm extends Component {
           name='helpDescription'
           id='helpDescription'
           rows='5'
-          label='Help Description'
+          label='Help Description (Make sure you add a link to the github issue.)'
           placeholder='Describe the help you require for the project'
           component={TextArea}
           validate={[validate.required]}

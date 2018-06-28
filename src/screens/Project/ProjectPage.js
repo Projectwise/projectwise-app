@@ -1,21 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
+import { DiscussionEmbed } from 'disqus-react'
 
-import Disqus from '../../components/Disqus'
 import Container from '../../components/Container'
 import Margin from '../../components/Margin'
 import Badge from '../../components/Badge'
 import LikeButton from '../../containers/LikeButton'
+
 import colors from '../../styles/colors'
+import { shortName } from '../../config/disqus'
 
 const WrappedContainer = styled(Container)`
-  max-width: 600px;
+  max-width: 800px;
   min-height: calc(100vh - 130px);
 `
 
 const ProjectPage = ({ project }) => {
   const {
-    id,
+    slug,
     title,
     description,
     projectUrl,
@@ -24,10 +26,9 @@ const ProjectPage = ({ project }) => {
     addedBy
   } = project
 
-  const disqusShortname = 'projectwise-1'
   const disqusConfig = {
     url: window.location.href,
-    identifier: id || title,
+    identifier: slug,
     title: title
   }
 
@@ -60,7 +61,7 @@ const ProjectPage = ({ project }) => {
         <LikeButton project={project} />
       </div>
       <Container className='pb-4' color={colors.white}>
-        <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+        <DiscussionEmbed shortname={shortName} config={disqusConfig} />
       </Container>
     </WrappedContainer>
   )
