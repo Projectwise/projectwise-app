@@ -14,6 +14,10 @@ const Card = styled(RCard)`
   max-width: 45vw;
 `
 
+const WrappedContainer = styled(Container)`
+  min-height: calc(100vh - 130px);
+`
+
 const Text = styled.h3`
   font-weight: bold;
 `
@@ -24,13 +28,13 @@ const Signup = ({ auth }) => {
   }
   return ([
     <Navbar />,
-    <Container fluid color={colors.light} className='py-5'>
+    <WrappedContainer fluid color={colors.light} className='py-5'>
       <Text className='text-muted text-center mb-4'>Join Projectwise</Text>
       <Card body className='mx-5 my-3 mx-auto'>
         <SignupForm />
       </Card>
       <p className='mt-1 text-center'>Already have an account? <Link to='/login'>Login</Link></p>
-    </Container>
+    </WrappedContainer>
   ])
 }
 
