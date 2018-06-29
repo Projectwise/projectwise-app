@@ -6,7 +6,10 @@ import colors from '../../styles/colors'
 
 const WrapperContainer = styled(Container)`
   width: 100%;
-  height: 100%
+  height: calc(100vh - 130px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const load8 = keyframes`
@@ -44,7 +47,7 @@ const LoaderDiv = styled.div`
 `
 
 export default () => (
-  <WrapperContainer color={colors.white} className='mx-auto my-auto'>
+  <WrapperContainer fluid color={colors.white} className='mx-auto my-auto'>
     <LoaderDiv />
   </WrapperContainer>
 )

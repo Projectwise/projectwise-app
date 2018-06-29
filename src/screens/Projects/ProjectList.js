@@ -12,7 +12,7 @@ import { getProjects } from '../../store/actions/projects'
 import colors from '../../styles/colors'
 
 const WrapperContainer = styled(Container)`
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 130px);
 `
 
 const FullButton = styled(Button)`

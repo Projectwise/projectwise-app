@@ -10,7 +10,7 @@ import colors from '../../styles/colors'
 import { getProject } from '../../store/actions/projects'
 
 const WrapperContainer = styled(Container)`
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 130px);
 `
 
 const NotFoundContainer = () => ([
@@ -30,7 +30,7 @@ class Project extends Component {
     const { projects, match } = this.props
     const { projectId } = match.params
     if (projects.isLoading) {
-      return (<Preloader />)
+      return ([<Navbar />, <Preloader />])
     } else if (!projects.projectsById[projectId]) {
       return (<NotFoundContainer />)
     } else {

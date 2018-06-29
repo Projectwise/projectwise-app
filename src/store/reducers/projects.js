@@ -40,7 +40,7 @@ const handleProjects = (payload) => ({
   }),
   failure: prevState => ({
     ...prevState,
-    errors: { ...payload.data.errors }
+    errors: { ...payload }
   })
 })
 
@@ -65,7 +65,7 @@ const handleProject = (payload) => ({
 
 const projects = (state = initialState, action) => {
   const { type, payload } = action
-
+  console.log(payload)
   switch (type) {
     case GET_PROJECTS:
       return handle(state, action, handleProjects(payload))
