@@ -11,7 +11,7 @@ class API {
       baseURL: `${PUBLIC_URI}/api`
     })
     this.githubAuthUrl = `https://github.com/login/oauth/authorize?${qs.stringify({
-      client_id: '6cbc3c175543c707c180',
+      client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
       redirect_uri: window.location.origin + '/auth/github/callback',
       scope: 'user'
     })}`
