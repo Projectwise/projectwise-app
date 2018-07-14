@@ -104,7 +104,7 @@ class SignupForm extends Component {
             </FullButton>
           </Col>
           <Col lg={6}>
-            <FullButton color='secondary'>
+            <FullButton color='secondary' tag='a' href={`${API.githubAuthUrl}`}>
               <i class='fa fa-github' aria-hidden='true' />&nbsp;&nbsp;Signup with Github
             </FullButton>
           </Col>

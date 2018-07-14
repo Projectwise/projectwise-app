@@ -28,16 +28,18 @@ const Login = ({ permission, auth }) => {
   if (auth.isAuthenticated) {
     return (<Redirect to='/' />)
   }
-  return ([
-    <Navbar />,
-    <WrappedContainer fluid color={colors.light} className='py-5'>
-      <Text className='text-muted text-center mb-4'>Welcome Back</Text>
-      <Card body className='mx-5 my-3 mx-auto'>
-        <LoginForm />
-      </Card>
-      <p className='mt-1 text-center'>New to Projectwise? <Link to='/signup'>Signup</Link></p>
-    </WrappedContainer>
-  ])
+  return (
+    <React.Fragment>
+      <Navbar />
+      <WrappedContainer fluid color={colors.light} className='py-5'>
+        <Text className='text-muted text-center mb-4'>Welcome Back</Text>
+        <Card body className='mx-5 my-3 mx-auto'>
+          <LoginForm />
+        </Card>
+        <p className='mt-1 text-center'>New to Projectwise? <Link to='/signup'>Signup</Link></p>
+      </WrappedContainer>
+    </React.Fragment>
+  )
 }
 
 const mapStateToProps = (state) => ({

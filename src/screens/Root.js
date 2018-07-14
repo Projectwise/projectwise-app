@@ -8,6 +8,7 @@ import Container from '../components/Container'
 
 import Home from './Home'
 import Login from './Login'
+import { Github } from './Auth'
 import Signup from './Signup'
 import Projects from './Projects'
 import Project from './Project'
@@ -20,6 +21,7 @@ const Root = () => {
       <Switch>
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
+        <Route path='/auth/github/callback' component={Github} />
         <PrivateRoute path='/new' component={AddProject} />
         <Route path='/projects/:projectId' component={Project} />
         <Route path='/projects' component={Projects} />

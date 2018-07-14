@@ -8,7 +8,7 @@ const ListItem = styled.li`
   align-items: 'flex-start';
   border-radius: 3px;
   display: flex;
-  color: ${colors.secondary};
+  color: ${colors.white};
   padding: 0.75em 1em;
   box-shadow: 0px 2px 4px #8798A4
 
@@ -27,7 +27,7 @@ const DismissButton = styled.button`
   -moz-appearance: none;
   background: transparent;
   border: 0;
-  color: ${colors.secondary};
+  color: ${colors.white};
   cursor: pointer;
   display: block;
   flex: 0 0 auto;

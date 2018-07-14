@@ -86,7 +86,7 @@ class LoginForm extends Component {
             </FullButton>
           </Col>
           <Col lg={6}>
-            <FullButton color='secondary'>
+            <FullButton color='secondary' tag='a' href={`${API.githubAuthUrl}`}>
               <i className='fa fa-github' aria-hidden='true' />&nbsp;&nbsp;Login with Github
             </FullButton>
           </Col>

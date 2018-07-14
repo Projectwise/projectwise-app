@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 
 const PUBLIC_URI = process.env.NODE_ENV === 'production'
   ? process.env.PUBLIC_URL
@@ -9,6 +10,11 @@ class API {
     this.axios = axios.create({
       baseURL: `${PUBLIC_URI}/api`
     })
+    this.githubAuthUrl = `https://github.com/login/oauth/authorize?${qs.stringify({
+      client_id: '6cbc3c175543c707c180',
+      redirect_uri: window.location.origin + '/auth/github/callback',
+      scope: 'user'
+    })}`
   }
   setAuthHeader (token) {
     this.axios.defaults.headers.common['Authorization'] = `bearer ${token}`
@@ -18,6 +24,12 @@ class API {
   }
   signup (userDetails) {
     return this.axios.post('/signup', userDetails)
+  }
+  githubToken (code) {
+    return this.axios.get(`/auth/token/github?code=${code}`)
+  }
+  githubAuthenticate (accessToken) {
+    return this.axios.get(`/auth/github?access_token=${accessToken}`)
   }
   login (userDetails) {
     return this.axios.post('/login', userDetails)
