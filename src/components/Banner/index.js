@@ -8,8 +8,7 @@ class Banner extends Component {
 
   render () {
     return (
-      <div id='amx-banner' style={{display: 'flex', justifyContent: 'space-around'}}>
-      </div>
+      <div id='amx-banner' style={{display: 'flex', justifyContent: 'space-around', marginTop: '20px'}} />
     )
   }
 }
