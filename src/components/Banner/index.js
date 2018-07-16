@@ -3,7 +3,7 @@ import postscribe from 'postscribe'
 
 class Banner extends Component {
   componentDidMount () {
-    postscribe('#amx-banner', `<script type='text/javascript' language='javascript' src='http://c.amazon-adsystem.com/aax2/assoc.js'></script>`)
+    postscribe('#amx-banner', `<script type='text/javascript' language='javascript' src='https://c.amazon-adsystem.com/aax2/assoc.js'></script>`)
   }
 
   render () {
