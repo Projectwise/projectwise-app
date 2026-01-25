@@ -803,24 +803,264 @@ Optional: Experts pledge 5-10% of implementation earnings back to maintainers th
 
 ---
 
+---
+
+## Business Ideas Feature
+
+### Inspiration: Ideabrowser
+
+[Ideabrowser](https://www.ideabrowser.com/) (launched May 2025) shows that curated business ideas drive massive engagement:
+- 669K visits with 704% growth in July 2025
+- Each idea = 50+ hours of research condensed into 10-minute read
+- Includes market analysis, competitor research, execution strategies
+
+### Ideas for Each Project
+
+For each white-label platform, we provide curated business ideas with:
+
+1. **Target Market** — Who would buy this?
+2. **Market Size** — How big is the opportunity?
+3. **Why Now** — Trends making this viable
+4. **Suggested Pricing** — What to charge
+5. **Countries** — Geographic opportunities (regulatory, language, etc.)
+6. **Difficulty** — Easy/Medium/Hard to execute
+7. **Proof Signals** — Reddit threads, search trends, competitor gaps
+
+### Example: Plausible Analytics Ideas
+
+| Idea | Target | Market | Countries |
+|------|--------|--------|-----------|
+| HIPAA-Compliant Healthcare Analytics | Hospitals, health apps | $4.2B | USA |
+| GDPR Analytics for EU E-commerce | Shopify stores in EU | 1.2M stores | Germany, France, NL |
+| School/University Analytics | K-12, universities | 130K US schools | USA, UK, Australia |
+| Privacy Analytics for Fintech | Banking apps, trading platforms | Growing | Worldwide |
+
+### Ideas Data Model
+
+```typescript
+interface BusinessIdea {
+  id: string
+  project: Project
+
+  // Core
+  title: string
+  slug: string
+  description: string
+
+  // Market
+  target_market: string
+  market_size?: string
+  why_now: string
+
+  // Execution
+  suggested_pricing: string
+  revenue_potential: string
+  difficulty: 'easy' | 'medium' | 'hard'
+  time_to_launch: string
+
+  // Geographic
+  countries: string[]
+  country_specific_reasons?: string
+
+  // Validation
+  search_volume?: number
+  competitor_count?: number
+  proof_signals: string[]
+
+  // SEO
+  keywords: string[]
+}
+```
+
+### Additional Programmatic SEO Pages
+
+| Page Type | URL Pattern | Count |
+|-----------|-------------|-------|
+| Ideas by project | `/projects/[slug]/ideas` | 100 |
+| Ideas by country | `/ideas/country/[country]` | 30 |
+| Ideas by industry | `/ideas/industry/[slug]` | 15 |
+| Ideas by difficulty | `/ideas/difficulty/[level]` | 3 |
+| Individual idea | `/ideas/[slug]` | 300+ |
+
+**Total additional pages: 400-500**
+
+---
+
+## Revised Architecture: Single Next.js App
+
+### Why Single Repo?
+
+After researching [Payload CMS 3.0](https://payloadcms.com/posts/blog/payload-30-the-first-cms-that-installs-directly-into-any-nextjs-app), the recommended approach has changed:
+
+> **Payload 3.0 is the first CMS that installs directly into your Next.js /app folder**
+
+This means:
+- No separate backend server needed
+- No Express or Fastify required
+- Built-in authentication (JWT, cookies, OAuth via Auth.js)
+- Deploy entire stack to Vercel as one app
+- No CORS configuration needed
+
+### Updated Architecture
+
+```
+projectwise/                      # Single Next.js 15 + Payload 3.0 app
+├── app/
+│   ├── (frontend)/               # Public pages (SSR/SSG)
+│   │   ├── page.tsx              # Homepage
+│   │   ├── projects/
+│   │   │   ├── page.tsx          # Project listing
+│   │   │   └── [slug]/
+│   │   │       ├── page.tsx      # Project detail
+│   │   │       └── ideas/
+│   │   │           └── page.tsx  # Ideas for this project
+│   │   ├── ideas/
+│   │   │   ├── page.tsx          # All ideas
+│   │   │   ├── country/[country]/
+│   │   │   └── industry/[industry]/
+│   │   ├── experts/
+│   │   ├── category/[slug]/
+│   │   └── alternative/[slug]/
+│   │
+│   ├── (payload)/                # Payload CMS (admin + API)
+│   │   ├── admin/[[...segments]]/
+│   │   │   └── page.tsx          # Admin panel at /admin
+│   │   └── api/[...slug]/
+│   │       └── route.ts          # REST API at /api
+│   │
+│   └── layout.tsx
+│
+├── payload/
+│   ├── collections/
+│   │   ├── Projects.ts
+│   │   ├── Ideas.ts              # NEW
+│   │   ├── Categories.ts
+│   │   ├── Experts.ts
+│   │   ├── Jobs.ts
+│   │   └── Users.ts
+│   ├── globals/
+│   │   └── Settings.ts
+│   └── payload.config.ts
+│
+├── components/                   # Shared UI (shadcn/ui)
+├── lib/                          # Utilities
+├── public/                       # Static assets
+├── tailwind.config.ts
+├── next.config.js
+└── package.json
+```
+
+### Deployment
+
+| Component | Service | Cost |
+|-----------|---------|------|
+| App (Next.js + Payload) | Vercel | Free tier |
+| Database | Neon PostgreSQL | Free tier (0.5GB) |
+| Media/Uploads | Vercel Blob | Free tier (1GB) |
+| Domain | Cloudflare | ~$10/year |
+
+**Total MVP cost: ~$10/year** (domain only)
+
+### Authentication (Built into Payload)
+
+No need for separate auth service:
+
+```typescript
+// payload.config.ts
+export default buildConfig({
+  collections: [
+    {
+      slug: 'users',
+      auth: {
+        tokenExpiration: 7200, // 2 hours
+        verify: true,         // Email verification
+        maxLoginAttempts: 5,  // Lockout protection
+        lockTime: 600000,     // 10 min lockout
+      },
+      fields: [
+        { name: 'role', type: 'select', options: ['admin', 'expert', 'operator'] },
+        // ...
+      ],
+    },
+    {
+      slug: 'experts',
+      auth: true,  // Separate auth collection for experts
+      // ...
+    },
+  ],
+})
+```
+
+### OAuth (GitHub) via Auth.js Plugin
+
+```typescript
+// Using payload-authjs plugin
+import { buildConfig } from 'payload'
+import { authPlugin } from 'payload-authjs'
+import GitHub from '@auth/core/providers/github'
+
+export default buildConfig({
+  plugins: [
+    authPlugin({
+      providers: [
+        GitHub({
+          clientId: process.env.GITHUB_ID,
+          clientSecret: process.env.GITHUB_SECRET,
+        }),
+      ],
+    }),
+  ],
+})
+```
+
+---
+
 ## Next Steps
 
-1. **Set up repositories**
-   - [ ] Create `projectwise-server` with Payload CMS
-   - [ ] Modernize `projectwise-app` with Next.js 15
+1. **Set up single repository**
+   - [ ] Create new Next.js 15 project with Payload 3.0
+   - [ ] Configure PostgreSQL (Neon)
+   - [ ] Set up Vercel deployment
 
-2. **Build MVP**
-   - [ ] Implement data models in Payload
-   - [ ] Seed initial 30 projects
-   - [ ] Build frontend pages
+2. **Build data layer**
+   - [ ] Implement Payload collections (Projects, Ideas, Categories, Experts)
+   - [ ] Seed initial 30 projects with 2-3 ideas each
+   - [ ] Set up GitHub API integration for stats
 
-3. **Launch**
-   - [ ] Deploy to Vercel + Railway
+3. **Build frontend**
+   - [ ] Homepage with featured projects
+   - [ ] Project listing and detail pages
+   - [ ] Ideas pages (per project, by country, by industry)
+   - [ ] Interest forms (Expert + Operator waitlist)
+
+4. **Launch**
+   - [ ] Deploy to Vercel
    - [ ] Submit to Product Hunt
    - [ ] Execute launch plan
 
 ---
 
+## Migration Path (If Needed Later)
+
+If the single app becomes too large or we need to scale independently:
+
+```
+Phase 1: MVP (Single App)
+─────────────────────────
+projectwise/              # Everything in one Next.js app
+Deploy: Vercel
+
+Phase 2: Scale (If Needed)
+─────────────────────────
+projectwise-web/          # Frontend only (static/SSG)
+projectwise-cms/          # Payload CMS (API + Admin)
+Deploy: Both on Vercel with CORS config
+```
+
+This is standard practice: **start simple, split when necessary**.
+
+---
+
 *Document created: January 2026*
 *Last updated: January 2026*
-*Version: 1.0*
+*Version: 1.1*
