@@ -1,6 +1,6 @@
 # Projectwise Documentation
 
-> **Domain:** projectwise.io
+> **Domain:** projectwise.ai (preferred) / projectwise.io (fallback)
 > **Twitter:** @projectwise_in (to be updated)
 > **Tagline:** Build a business on open source
 
@@ -16,6 +16,7 @@
 | [04 - Roadmap](./04-roadmap.md) | V1, V2, V3 phases with deliverables |
 | [05 - Content & Launch Strategy](./05-content-strategy.md) | SEO, social media, build in public |
 | [06 - Project Seed List](./06-project-seed-list.md) | 100 open source projects to feature |
+| [07 - New Features](./07-new-features.md) | AI Prompts, Showcase, Stacks & Interlinking |
 
 ---
 
@@ -76,7 +77,7 @@ pnpm dev
 | **Framework** | Next.js 15 + Payload CMS 3.0 | Single deployment, TypeScript native |
 | **Database** | PostgreSQL (Neon) | Free tier, Vercel integration |
 | **Hosting** | Vercel | Free tier, instant deploys |
-| **Domain** | projectwise.io | Available, professional |
+| **Domain** | projectwise.ai (preferred) | .ai aligns with AI prompt features |
 | **Architecture** | Single repo | Simpler for MVP, can split later |
 
 ---

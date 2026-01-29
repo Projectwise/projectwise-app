@@ -95,6 +95,7 @@ Week 2:
 |---------|----------|-------------|
 | Expert interest form | P0 | "I can help with this project" |
 | Operator interest form | P0 | "I want to run this as SaaS" |
+| AI Setup Prompts | P1 | Copy-paste prompts for Claude Code/Cursor/Codex ([details](./07-new-features.md#feature-a-ai-setup-prompts)) |
 | Contributor badges | P1 | Show GitHub contributors on projects |
 | Email capture | P1 | Newsletter signup |
 | Admin dashboard | P1 | View submissions in Payload |
@@ -165,6 +166,8 @@ Week 4:
 |---------|----------|-------------|
 | Ideas collection | P0 | 3-5 business ideas per project |
 | Ideas on project pages | P0 | Display ideas with details |
+| Project Showcase | P0 | "Built with" gallery per project ([details](./07-new-features.md#feature-b-project-showcase)) |
+| Stacks & Interlinking | P1 | Curated OSS stacks + project relationships ([details](./07-new-features.md#feature-c-stacks--interlinking)) |
 | Dedicated ideas pages | P1 | /ideas, /ideas/[slug] |
 | Target market tags | P1 | Countries, industries |
 | Pricing suggestions | P1 | Suggested pricing tiers |
