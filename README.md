@@ -30,20 +30,20 @@
 
 ### Setup
 
-- [ ] **#1 — Initialize Next.js 15 + Payload CMS 3.0** · [Issue](../../issues/1)
+- [ ] **Initialize Next.js 15 + Payload CMS 3.0** · [#7](https://github.com/Projectwise/projectwise-app/issues/7)
   - [ ] Create Next.js 15 project with TypeScript and Tailwind CSS
   - [ ] Install and configure Payload CMS 3.0 inside `/app`
   - [ ] Set up PostgreSQL connection (Neon)
   - [ ] Configure ESLint, Prettier, project structure
   - [ ] Add `CLAUDE.md` / `AGENTS.md` for AI-assisted development
 
-- [ ] **#2 — Configure Deployment** · [Issue](../../issues/2)
+- [ ] **Configure Deployment** · [#8](https://github.com/Projectwise/projectwise-app/issues/8)
   - [ ] Vercel project setup with environment variables
   - [ ] Neon PostgreSQL provisioning (dev + production branches)
   - [ ] Custom domain configuration
   - [ ] CI/CD: build + lint on PR, deploy on merge to main
 
-- [ ] **#3 — Define Core Payload Collections** · [Issue](../../issues/3)
+- [ ] **Define Core Payload Collections** · [#9](https://github.com/Projectwise/projectwise-app/issues/9)
   - [ ] Projects collection (name, slug, tagline, description, logo, tier, license, URLs, flags)
   - [ ] Categories collection (name, slug, description, icon)
   - [ ] Seed script for initial data
@@ -51,14 +51,14 @@
 
 ### V1: MVP Directory
 
-- [ ] **#4 — Build Project Listing Page** · [Issue](../../issues/4)
+- [ ] **Build Project Listing Page** · [#10](https://github.com/Projectwise/projectwise-app/issues/10)
   - [ ] `/projects` route with grid/list view toggle
   - [ ] Filter by category, tier, license type
   - [ ] Search by project name
   - [ ] Pagination or infinite scroll
   - [ ] Sort by: featured, name, newest
 
-- [ ] **#5 — Build Project Detail Page** · [Issue](../../issues/5)
+- [ ] **Build Project Detail Page** · [#11](https://github.com/Projectwise/projectwise-app/issues/11)
   - [ ] `/projects/[slug]` route
   - [ ] Hero section: logo, name, tagline, tier badge, links
   - [ ] Overview: description, license, key features
@@ -66,13 +66,13 @@
   - [ ] Sidebar: quick stats, GitHub stars, links
   - [ ] SEO: meta tags, Open Graph, JSON-LD schema
 
-- [ ] **#6 — Build Category Pages** · [Issue](../../issues/6)
+- [ ] **Build Category Pages** · [#12](https://github.com/Projectwise/projectwise-app/issues/12)
   - [ ] `/categories/[slug]` route
   - [ ] Category description and icon
   - [ ] Filtered project grid for that category
   - [ ] Cross-links to related categories
 
-- [ ] **#7 — Build Homepage** · [Issue](../../issues/7)
+- [ ] **Build Homepage** · [#13](https://github.com/Projectwise/projectwise-app/issues/13)
   - [ ] Hero section with value proposition
   - [ ] Featured projects (3-6 staff picks)
   - [ ] Category grid with project counts
@@ -80,7 +80,7 @@
   - [ ] CTA for experts and operators
   - [ ] Latest additions section
 
-- [ ] **#8 — Site-Wide Layout and Navigation** · [Issue](../../issues/8)
+- [ ] **Site-Wide Layout and Navigation** · [#14](https://github.com/Projectwise/projectwise-app/issues/14)
   - [ ] Responsive header with nav links and search
   - [ ] Footer with links, newsletter signup placeholder
   - [ ] Mobile hamburger menu
@@ -88,14 +88,14 @@
   - [ ] Dark/light mode toggle
   - [ ] 404 and error pages
 
-- [ ] **#9 — Seed 20 Projects** · [Issue](../../issues/9)
+- [ ] **Seed 20 Projects** · [#15](https://github.com/Projectwise/projectwise-app/issues/15)
   - [ ] Select top 20 from seed list (balanced across categories)
   - [ ] Write descriptions, taglines, feature lists for each
   - [ ] Collect logos and screenshots
   - [ ] Assign tiers (Tier 1, 2, or 3)
   - [ ] Create seed script or Payload migration
 
-- [ ] **#10 — Programmatic SEO Pages** · [Issue](../../issues/10)
+- [ ] **Programmatic SEO Pages** · [#16](https://github.com/Projectwise/projectwise-app/issues/16)
   - [ ] `/alternatives/[slug]` — "Open source alternative to [Product]"
   - [ ] Dynamic sitemap.xml generation
   - [ ] Meta tags and OG images for all page types
@@ -104,34 +104,34 @@
 
 ### V2: Contributors + Forms + AI Prompts
 
-- [ ] **#11 — Expert Interest Form + Collection** · [Issue](../../issues/11)
+- [ ] **Expert Interest Form + Collection** · [#17](https://github.com/Projectwise/projectwise-app/issues/17)
   - [ ] Experts Payload collection (name, email, GitHub, skills, rate, availability)
   - [ ] "I can help with this project" form on project detail page
   - [ ] Form validation and submission handling
   - [ ] Admin review workflow (pending → verified → rejected)
   - [ ] Email notification on new submission
 
-- [ ] **#12 — Operator Interest Form + Collection** · [Issue](../../issues/12)
+- [ ] **Operator Interest Form + Collection** · [#18](https://github.com/Projectwise/projectwise-app/issues/18)
   - [ ] Interests Payload collection (name, email, project, budget, timeline, message)
   - [ ] "I want to run this as SaaS" form on project detail page
   - [ ] Form validation and submission handling
   - [ ] Admin notification on new submission
   - [ ] Thank you / next steps page
 
-- [ ] **#13 — AI Setup Prompts** · [Issue](../../issues/13)
+- [ ] **AI Setup Prompts** · [#19](https://github.com/Projectwise/projectwise-app/issues/19)
   - [ ] Prompts Payload collection (project, type, title, prompt text, tested flag)
   - [ ] "Deploy with AI" section on project detail page
   - [ ] Three prompt types: Quick Start, Business Setup, Full Stack
   - [ ] Copy-to-clipboard functionality
   - [ ] Write and test prompts for all 20 seed projects
 
-- [ ] **#14 — GitHub Contributors Integration** · [Issue](../../issues/14)
+- [ ] **GitHub Contributors Integration** · [#20](https://github.com/Projectwise/projectwise-app/issues/20)
   - [ ] Fetch contributors via GitHub API for each project
   - [ ] Display contributor avatars on project detail page
   - [ ] Cache results to avoid rate limits
   - [ ] Link to contributor GitHub profiles
 
-- [ ] **#15 — Newsletter Signup** · [Issue](../../issues/15)
+- [ ] **Newsletter Signup** · [#21](https://github.com/Projectwise/projectwise-app/issues/21)
   - [ ] Integrate Buttondown or ConvertKit
   - [ ] Email capture in footer and homepage CTA
   - [ ] Welcome email automation
@@ -139,14 +139,14 @@
 
 ### V3: Ideas, Showcase, Stacks
 
-- [ ] **#16 — Business Ideas Collection + Pages** · [Issue](../../issues/16)
+- [ ] **Business Ideas Collection + Pages** · [#22](https://github.com/Projectwise/projectwise-app/issues/22)
   - [ ] Ideas Payload collection (title, project, description, target market, pricing, competitors, difficulty, MRR potential)
   - [ ] Ideas section on project detail page (3-5 per project)
   - [ ] `/ideas` index page with filtering
   - [ ] `/ideas/[slug]` detail page
   - [ ] Write 60-100 ideas across seed projects
 
-- [ ] **#17 — Project Showcase + Submissions** · [Issue](../../issues/17)
+- [ ] **Project Showcase + Submissions** · [#23](https://github.com/Projectwise/projectwise-app/issues/23)
   - [ ] Showcases Payload collection (name, URL, screenshot, project, industry, revenue, status)
   - [ ] "Built with [Project]" section on project detail page
   - [ ] Showcase submission form with screenshot upload
@@ -155,21 +155,21 @@
   - [ ] `/projects/[slug]/showcase` per-project showcase page
   - [ ] "Staff Pick" featured badge
 
-- [ ] **#18 — Curated Stacks + Pages** · [Issue](../../issues/18)
+- [ ] **Curated Stacks + Pages** · [#24](https://github.com/Projectwise/projectwise-app/issues/24)
   - [ ] Stacks Payload collection (name, projects with roles, use case, cost, deploy prompt)
   - [ ] `/stacks` index page
   - [ ] `/stacks/[slug]` detail page with project list and deploy prompt
   - [ ] "Part of these stacks" section on project detail page
   - [ ] Create 5 initial stacks (E-commerce, SaaS Starter, Agency, Community, DevOps)
 
-- [ ] **#19 — Project Interlinking + Relationships** · [Issue](../../issues/19)
+- [ ] **Project Interlinking + Relationships** · [#25](https://github.com/Projectwise/projectwise-app/issues/25)
   - [ ] ProjectRelationships Payload collection (projectA, projectB, type, description)
   - [ ] Relationship types: works-with, depends-on, alternative-to, extends
   - [ ] "Works Well With" section on project detail page
   - [ ] "Alternatives" section on project detail page
   - [ ] Bidirectional display (if A works-with B, show on both pages)
 
-- [ ] **#20 — Seed Showcase Data** · [Issue](../../issues/20)
+- [ ] **Seed Showcase Data** · [#26](https://github.com/Projectwise/projectwise-app/issues/26)
   - [ ] Collect 3-5 showcase entries per Tier 1 project from existing showcases
   - [ ] Sources: Next.js showcase, Tailwind showcase, Strapi showcase, Ghost explore
   - [ ] Screenshots and descriptions for each entry
@@ -177,20 +177,20 @@
 
 ### V4: Launch Campaign
 
-- [ ] **#21 — Seed 50 Projects + Full Content** · [Issue](../../issues/21)
+- [ ] **Seed 50 Projects + Full Content** · [#27](https://github.com/Projectwise/projectwise-app/issues/27)
   - [ ] Expand from 20 to 50 projects
   - [ ] AI prompts for all 50 projects
   - [ ] Business ideas for all 50 projects
   - [ ] Relationship mappings between all projects
   - [ ] Quality pass: descriptions, logos, screenshots
 
-- [ ] **#22 — Analytics Setup** · [Issue](../../issues/22)
+- [ ] **Analytics Setup** · [#28](https://github.com/Projectwise/projectwise-app/issues/28)
   - [ ] Integrate Plausible or Umami (self-hosted)
   - [ ] Track page views, top pages, referrers
   - [ ] Custom events: form submissions, prompt copies, search queries
   - [ ] Dashboard access for team
 
-- [ ] **#23 — Performance Optimization + Launch Prep** · [Issue](../../issues/23)
+- [ ] **Performance Optimization + Launch Prep** · [#29](https://github.com/Projectwise/projectwise-app/issues/29)
   - [ ] Lighthouse score > 90 on all page types
   - [ ] Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
   - [ ] Image optimization (Next.js Image, WebP, lazy loading)
@@ -203,31 +203,31 @@
 ## Dependency Graph
 
 ```
-#1 Setup
-├── #2 Deployment
-└── #3 Collections
-    ├── #4 Listings ──────┐
-    ├── #5 Detail Page ───┤
-    ├── #6 Categories ────┤── #7 Homepage
-    ├── #8 Layout         │
-    ├── #9 Seed 20 ───────┘
-    └── #10 SEO Pages
+#7 Setup
+├── #8 Deployment
+└── #9 Collections
+    ├── #10 Listings ─────┐
+    ├── #11 Detail Page ──┤
+    ├── #12 Categories ───┤── #13 Homepage
+    ├── #14 Layout        │
+    ├── #15 Seed 20 ──────┘
+    └── #16 SEO Pages
                           V1 COMPLETE
-    ├── #11 Experts       ┐
-    ├── #12 Operators      │
-    ├── #13 AI Prompts     ├── parallel
-    ├── #14 GitHub API     │
-    └── #15 Newsletter    ┘
+    ├── #17 Experts       ┐
+    ├── #18 Operators      │
+    ├── #19 AI Prompts     ├── parallel
+    ├── #20 GitHub API     │
+    └── #21 Newsletter    ┘
                           V2 COMPLETE
-    ├── #16 Ideas         ┐
-    ├── #17 Showcase       │
-    ├── #18 Stacks         ├── parallel
-    ├── #19 Interlinking   │
-    └── #20 Seed Showcase ┘
+    ├── #22 Ideas         ┐
+    ├── #23 Showcase       │
+    ├── #24 Stacks         ├── parallel
+    ├── #25 Interlinking   │
+    └── #26 Seed Showcase ┘
                           V3 COMPLETE
-    ├── #21 Seed 50       ┐
-    ├── #22 Analytics      ├── parallel
-    └── #23 Performance   ┘
+    ├── #27 Seed 50       ┐
+    ├── #28 Analytics      ├── parallel
+    └── #29 Performance   ┘
                           V4 LAUNCH
 ```
 
